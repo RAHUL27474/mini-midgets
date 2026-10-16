@@ -1,0 +1,54 @@
+CHAI PENDING HAI — EPISODE 1: "MESSAGE"
+Voiceover & dialogue script (record each line as a separate take)
+Total spoken: ~70 words. Leave silences — they carry the emotion.
+
+------------------------------------------------------------
+KABIR (adult, 26) — quiet, controlled, voice slightly heavy
+------------------------------------------------------------
+
+K1  [VO · 0:02–0:08 · over S02–S03]
+    "Paanch saal pehle mera best friend gayab ho gaya…
+     (pause 0.5s)
+     aur aaj bhi woh mujhe birthday wish karta hai."
+    Delivery: Low, almost to himself. Slight crack on "aaj bhi".
+
+K2  [VO · 0:34–0:40 · over S11]
+    "Uska phone police ko mila tha…
+     (pause 0.7s)
+     aur unhone uski Maa ko de diya tha."
+    Delivery: Flat, remembering. Slow down on "uski Maa ko".
+
+K3  [On-screen whisper · 0:48–0:53 · S14]
+    "Matlab yeh message…
+     (pause 1s)
+     Sameer ke ghar se aa raha hai."
+    Delivery: Whisper. Breath before "Sameer". Disbelief, not fear.
+
+------------------------------------------------------------
+SAMEER (21, flashback) — bright, teasing, warm
+------------------------------------------------------------
+
+S1  [0:18–0:23 · S07]
+    "Agle birthday pe full chai, promise. Tu treat dega, pagle."
+    Delivery: Playful, laughing through "pagle".
+
+S2  [0:26–0:30 · S09]
+    "Kyunki tu kabhi chhod ke nahi jaata."
+    Delivery: The joke drops out. Soft, sincere, slower. This is the line people should remember.
+
+------------------------------------------------------------
+YOUNG KABIR (21, flashback) — lighter, shyer than adult Kabir
+------------------------------------------------------------
+
+YK1 [0:23–0:26 · S08]
+    "Har baar main hi kyun?"
+    Delivery: Laughing, mock-complaining.
+
+------------------------------------------------------------
+RECORDING NOTES
+------------------------------------------------------------
+- Flashback lines (S1, S2, YK1): add light room reverb + slight warmth EQ in post.
+- Present lines (K1–K3): dry, close mic, intimate.
+- If using AI voice: pick two clearly different voices for Kabir and Sameer,
+  keep the same voices for all 4 episodes, and add your own performance edits
+  (pauses, breaths) — don't use raw default output.

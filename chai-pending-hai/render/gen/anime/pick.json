@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "room_full": { "file": "room_full_11.jpg", "glow": [740, 1500] },
+    "road_bg": { "file": "road_bg_7.jpg" },
+    "scooter_riders": { "file": "scooter_riders_5.jpg", "key": true },
+    "tapri_bg": { "file": "tapri_bg_7.jpg", "sun": [540, 220] },
+    "friends_bench": { "file": "friends_bench_5.jpg", "key": true, "mouth": [385, 345, 45] },
+    "blur_bg": { "file": "blur_bg_7.jpg" },
+    "kabir_young_laugh": { "file": "kabir_young_laugh_11.jpg", "key": true, "mouth": [300, 395, 40] },
+    "sky_bg": { "file": "sky_bg_7.jpg", "sun": [540, 700] },
+    "sameer_close": { "file": "sameer_close_5.jpg", "key": true, "mouth": [300, 370, 50] },
+    "dining_bg": { "file": "dining_bg_7.jpg", "lamp": [370, 60], "paper": [820, 1420, 0.22] },
+    "kabir_news": { "file": "kabir_news_11.jpg", "key": true },
+    "kabir_face": { "file": "kabir_face_11.jpg", "key": true, "mouth": [370, 575, 55] },
+    "corridor_bg": { "file": "corridor_bg_7.jpg", "door": [540] },
+    "kabir_walk": { "file": "kabir_walk_11.jpg", "key": true },
+    "bedroom_bg": { "file": "bedroom_bg_7.jpg", "phone": [392, 1530] }
+  }
+}
