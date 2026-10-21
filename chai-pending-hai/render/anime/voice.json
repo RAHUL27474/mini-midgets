@@ -1,0 +1,101 @@
+{
+ "lines": [
+  {
+   "id": "k1a",
+   "text": "पाँच साल पहले, मेरा सबसे अच्छा दोस्त... गायब हो गया।",
+   "exag": 0.6,
+   "cfg": 0.3,
+   "ref_speaker": "HIN_M",
+   "ref_emotion": "sad"
+  },
+  {
+   "id": "k1b",
+   "text": "और आज भी... वो मुझे जन्मदिन की बधाई देता है।",
+   "exag": 0.7,
+   "cfg": 0.3,
+   "ref_speaker": "HIN_M",
+   "ref_emotion": "sad"
+  },
+  {
+   "id": "s1a",
+   "text": "अगले जन्मदिन पर पूरी चाय, पक्का वादा!",
+   "exag": 0.75,
+   "cfg": 0.45,
+   "ref_speaker": "URD_M",
+   "ref_emotion": "happy"
+  },
+  {
+   "id": "s1b",
+   "text": "पैसे तू देगा, पगले!",
+   "exag": 0.8,
+   "cfg": 0.45,
+   "ref_speaker": "URD_M",
+   "ref_emotion": "happy"
+  },
+  {
+   "id": "y1",
+   "text": "हर बार मैं ही क्यों?",
+   "exag": 0.7,
+   "cfg": 0.45,
+   "ref_speaker": "HIN_M",
+   "ref_emotion": "happy"
+  },
+  {
+   "id": "s2",
+   "text": "क्योंकि तू... कभी छोड़कर नहीं जाता।",
+   "exag": 0.5,
+   "cfg": 0.3,
+   "ref_speaker": "URD_M",
+   "ref_emotion": "sad"
+  },
+  {
+   "id": "k2a",
+   "text": "उसका फ़ोन पुलिस को मिला था।",
+   "exag": 0.55,
+   "cfg": 0.3,
+   "ref_speaker": "HIN_M",
+   "ref_emotion": "sad"
+  },
+  {
+   "id": "k2b",
+   "text": "और उन्होंने वो... उसकी माँ को दे दिया था।",
+   "exag": 0.65,
+   "cfg": 0.25,
+   "ref_speaker": "HIN_M",
+   "ref_emotion": "sad"
+  },
+  {
+   "id": "k3a",
+   "text": "मतलब ये मैसेज...",
+   "exag": 0.7,
+   "cfg": 0.25,
+   "ref_speaker": "HIN_M",
+   "ref_emotion": "fear"
+  },
+  {
+   "id": "k3b",
+   "text": "समीर के घर से आ रहा है।",
+   "exag": 0.8,
+   "cfg": 0.25,
+   "ref_speaker": "HIN_M",
+   "ref_emotion": "surprise"
+  }
+ ],
+ "music": [
+  {
+   "id": "m_night",
+   "secs": 30,
+   "prompt": "sad emotional anime soundtrack, slow solo piano, soft gentle single notes, melancholic, lonely night, lots of reverb, cinematic, 70 bpm"
+  },
+  {
+   "id": "m_gold",
+   "secs": 16,
+   "prompt": "warm nostalgic anime soundtrack, gentle piano and soft strings, hopeful and tender, golden hour memories, cinematic, 80 bpm"
+  },
+  {
+   "id": "m_tense",
+   "secs": 14,
+   "prompt": "emotional anime soundtrack climax, low sustained cello note swelling, tense, heartbreaking realization, slow strings, cinematic"
+  }
+ ]
+}

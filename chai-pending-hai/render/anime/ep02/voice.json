@@ -1,0 +1,10 @@
+{
+ "lines": [
+  { "id": "k1", "text": "आंटी... वो मैसेज... आप भेजती हो?", "ref_gender": "male", "ref_speaker": "HIN_M", "ref_emotion": "fear", "exag": 0.65, "cfg": 0.3 },
+  { "id": "sh1", "text": "हर साल... उसका फ़ोन ख़ुद याद दिलाता है।", "ref_gender": "female", "ref_speaker": "URD_F", "ref_emotion": "sad", "exag": 0.55, "cfg": 0.3 },
+  { "id": "sh2", "text": "कबीर का जन्मदिन... चाय पेंडिंग है।", "ref_gender": "female", "ref_speaker": "URD_F", "ref_emotion": "sad", "exag": 0.6, "cfg": 0.3 },
+  { "id": "sh3", "text": "मैं बस... उसकी अधूरी बात पूरी करती हूँ।", "ref_gender": "female", "ref_speaker": "URD_F", "ref_emotion": "sad", "exag": 0.65, "cfg": 0.25 },
+  { "id": "sh4", "text": "तू आता नहीं था... तो मैंने सोचा, मैसेज ही सही।", "ref_gender": "female", "ref_speaker": "URD_F", "ref_emotion": "sad", "exag": 0.6, "cfg": 0.3 },
+  { "id": "k2", "text": "आज चाय... मैं पिलाऊँगा, आंटी।", "ref_gender": "male", "ref_speaker": "HIN_M", "ref_emotion": "sad", "exag": 0.6, "cfg": 0.3 }
+ ]
+}

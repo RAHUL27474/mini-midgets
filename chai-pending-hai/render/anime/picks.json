@@ -1,0 +1,48 @@
+{
+ "keys": {
+  "s01": "s01_1.png",
+  "s02": "s02_1.png",
+  "s03": "s03_1.png",
+  "s04": "s04_1.png",
+  "s05": "s05_1.png",
+  "s06": "s06_1.png",
+  "s07": "s07_1.png",
+  "s08": "s08_2.png",
+  "s09": "s09_1.png",
+  "s10": "s10_1.png",
+  "s11": "s11_1.png",
+  "s12": "s12_2.png",
+  "s14": "cph-keys-d/s14_2.png",
+  "s15": "cph-keys-d/s15_1.png",
+  "s16": "s03_2.png"
+ },
+ "music": {
+  "m_night": "m_night_0.wav",
+  "m_gold": "m_gold_1.wav",
+  "m_tense": "m_tense_0.wav"
+ },
+ "voice": {
+  "k1a": "cph-voice2-k/k1a_1.wav",
+  "k1b": "cph-voice2-k/k1b_2.wav",
+  "s1a": "cph-voice2-s/s1a_3.wav",
+  "s1b": "cph-voice2-s/s1b_1.wav",
+  "y1": "cph-voice2-s/y1_1.wav",
+  "s2": null,
+  "k2a": "cph-voice2-k/k2a_2.wav",
+  "k2b": "cph-voice2-k/k2b_2.wav",
+  "k3a": "cph-voice2-k/k3a_3.wav",
+  "k3b": "cph-voice2-k/k3b_3.wav"
+ },
+ "voice_v1": {
+  "k1a": "k1a_0.wav",
+  "k1b": "k1b_1.wav",
+  "s1a": "s1a_0.wav",
+  "s1b": "s1b_0.wav",
+  "y1": "y1_0.wav",
+  "s2": "s2_1.wav",
+  "k2a": "k2a_0.wav",
+  "k2b": "k2b_1.wav",
+  "k3a": "k3a_0.wav",
+  "k3b": "k3b_2.wav"
+ }
+}

@@ -1,0 +1,144 @@
+{
+  "chars": {
+    "KABIR": "1boy, solo, adult indian man, dark-skinned male, brown skin, short black hair, side part, light stubble, brown eyes, tired eyes, light blue collared shirt, sleeves rolled up",
+    "YKABIR": "young indian man, dark-skinned male, brown skin, short neat black hair, clean-shaven, brown eyes, grey t-shirt, open denim jacket",
+    "SAMEER": "young indian man, dark-skinned male, brown skin, messy wavy black hair, round face, brown eyes, mole under eye, red hoodie"
+  },
+  "grades": {
+    "night": "night, dark room, dim lighting, blue theme, cold color palette, phone screen glow, moonlight through window",
+    "gold": "sunset, golden hour, orange sky, warm lighting, sunlight, lens flare, light particles, nostalgic"
+  },
+  "style": "anime screenshot, anime coloring, cinematic lighting, detailed background, scenery, depth of field, masterpiece, high score, great score, absurdres",
+  "negative": "lowres, bad anatomy, bad hands, extra fingers, missing fingers, fused fingers, text, speech bubble, english text, logo, error, cropped, worst quality, low quality, low score, bad score, average score, signature, watermark, username, blurry, 3d, realistic, photo, chibi, white skin, pale skin",
+  "motion_negative": "static frame, frozen, still image, morphing face, deformed hands, extra limbs, flicker, text, watermark, subtitles, low quality, blurry, camera shake, distorted face",
+  "shots": [
+    {
+      "id": "s01",
+      "start": 0,
+      "dur": 2.2,
+      "grade": "night",
+      "img": "no humans, close-up, smartphone lying face-up on a wooden bedside table, phone screen glowing in complete darkness, blue glow on wood, alarm clock, glass of water",
+      "motion": "the smartphone screen lights up brightly in the dark room, the blue glow spreads across the table, slow camera push in, dust particles float in the light"
+    },
+    {
+      "id": "s02",
+      "start": 2.2,
+      "dur": 3,
+      "grade": "night",
+      "img": "{KABIR}, lying in bed, on back, pillow, holding phone above face, face lit from below by phone light, surprised, wide eyes, parted lips, close-up, from above",
+      "motion": "the man lying in bed slowly opens his eyes wider in quiet shock while staring at the glowing phone, he blinks once slowly, his chest rises with a breath, subtle camera push in"
+    },
+    {
+      "id": "s03",
+      "start": 5.2,
+      "dur": 3,
+      "grade": "night",
+      "img": "{KABIR}, sitting on edge of bed, holding phone, looking down, wide shot, full body, small rented room, ceiling fan, small birthday cake with one unlit candle on a plastic chair, window, city lights, lonely",
+      "motion": "the ceiling fan rotates slowly, the man sits still on the edge of the bed looking at his phone, his shoulders slump, city lights twinkle outside the window, slow camera drift to the left"
+    },
+    {
+      "id": "s04",
+      "start": 8.2,
+      "dur": 3,
+      "grade": "night",
+      "img": "1boy, over the shoulder, from behind, holding phone, thumb on phone screen, blurry bedroom background, phone screen glow, hands, dark",
+      "motion": "his thumb scrolls slowly up the glowing phone screen, the phone light flickers on his hand, slight handheld camera motion"
+    },
+    {
+      "id": "s05",
+      "start": 11.2,
+      "dur": 3.8,
+      "grade": "night",
+      "img": "{KABIR}, close-up, looking down at phone, typing, tears in eyes, glistening eyes, clenched jaw, sad, blue light on face, keychain",
+      "motion": "the man types on his phone with his thumbs, his eyes glisten with held back tears, his jaw tightens, he swallows hard, very slow camera push in"
+    },
+    {
+      "id": "s06",
+      "start": 15,
+      "dur": 3,
+      "grade": "gold",
+      "img": "2boys, {SAMEER} driving an old blue scooter, laughing, {YKABIR} sitting behind him as passenger, smiling, riding, tree-lined road, india, wind, hair blowing, from side",
+      "motion": "two friends ride a blue scooter down a tree-lined road, the driver laughs loudly, their hair blows in the wind, trees and sunlight stream past behind them, tracking camera moves alongside"
+    },
+    {
+      "id": "s07",
+      "start": 18,
+      "dur": 5,
+      "grade": "gold",
+      "img": "2boys, sitting on wooden bench, roadside tea stall, chai, small glasses of tea, steam, {SAMEER} grinning and pointing at friend, {YKABIR} smiling shyly, blue scooter parked behind, orange cat sleeping on scooter seat, kettle, india street",
+      "motion": "two friends sit on a bench at a tea stall, the boy in the red hoodie laughs, talks and points at his friend, steam rises from the chai glasses, the orange cat sleeps on the scooter, gentle camera drift"
+    },
+    {
+      "id": "s08",
+      "start": 23,
+      "dur": 3.4,
+      "grade": "gold",
+      "img": "1boy, solo, {YKABIR}, laughing, closed eyes, shaking head, holding small glass of tea, upper body, tea stall background, blurry background",
+      "motion": "the young man laughs and shakes his head while talking, holding a small glass of chai, warm sunlight flickers, shallow focus"
+    },
+    {
+      "id": "s09",
+      "start": 26.4,
+      "dur": 3.8,
+      "grade": "gold",
+      "img": "1boy, solo, {SAMEER}, gentle smile, looking at viewer, sincere eyes, backlighting, sun behind head, halo of light, hair glowing, close-up, portrait",
+      "motion": "the young man's playful smile softens into a sincere gentle smile as he speaks softly, his hair glows in the sunset backlight, light particles drift, very slow camera push in"
+    },
+    {
+      "id": "s10",
+      "start": 30.2,
+      "dur": 4,
+      "grade": "night",
+      "img": "{KABIR}, sitting at small wooden desk, opening desk drawer, folded red hoodie and old newspaper in drawer, desk lamp, pool of warm light, dark room",
+      "motion": "the man slowly pulls open the desk drawer and reaches in, lifting an old folded newspaper, the desk lamp light flickers slightly"
+    },
+    {
+      "id": "s11",
+      "start": 34.2,
+      "dur": 5.8,
+      "grade": "night",
+      "img": "no humans, close-up, old yellowed newspaper clipping, photo of an abandoned blue scooter near a riverbank printed on newspaper, creased paper, hands holding paper, desk lamp light, wooden desk",
+      "motion": "slow camera pan across the old newspaper clipping held in trembling hands, the paper shakes slightly, warm lamp light"
+    },
+    {
+      "id": "s12",
+      "start": 40,
+      "dur": 5,
+      "grade": "night",
+      "img": "{KABIR}, sitting at desk, holding newspaper in one hand and glowing phone in other hand, frozen, shocked, eyes looking at phone, medium shot, desk lamp",
+      "motion": "the man sits frozen, his eyes slowly move from the newspaper to the glowing phone in his other hand, a dawning realization, completely still room, very slow push in"
+    },
+    {
+      "id": "s13",
+      "start": 45,
+      "dur": 3,
+      "grade": "night",
+      "img": "no humans, extreme close-up, old newspaper, lines of small printed text, thumb, shallow depth of field, yellowed paper, desk lamp",
+      "motion": "sudden fast zoom into the printed newspaper text, then the camera holds still, the thumb trembles"
+    },
+    {
+      "id": "s14",
+      "start": 48,
+      "dur": 5,
+      "grade": "night",
+      "img": "{KABIR}, extreme close-up, face, wide eyes, single tear, parted lips, half face lit by warm lamp, half face lit by blue phone light, shocked realization",
+      "motion": "extreme close-up, the man's eyes widen, a single tear rolls down his cheek, his lips tremble as he whispers, his breathing quickens"
+    },
+    {
+      "id": "s15",
+      "start": 53,
+      "dur": 3,
+      "grade": "night",
+      "img": "{KABIR}, grabbing dark jacket from wall hook, rushing toward open door, dynamic angle, motion blur, newspaper on desk, bright corridor light through door, dark room",
+      "motion": "the door is yanked open and the man rushes out through it in a hurry, his jacket swinging, fast dynamic movement, light from the corridor floods in"
+    },
+    {
+      "id": "s16",
+      "start": 56,
+      "dur": 4,
+      "grade": "night",
+      "img": "no humans, empty small rented room, single bed, smartphone glowing face-up on bed, birthday cake with unlit candle on plastic chair, ceiling fan, closed door, window, city lights, lonely, wide shot",
+      "motion": "the empty room is still, the ceiling fan turns slowly, the phone on the bed glows, curtains move slightly in the breeze, slow camera push in toward the phone"
+    }
+  ]
+}
