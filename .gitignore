@@ -1,2 +1,8 @@
 chai-pending-hai/render/kaggle_out/
 chai-pending-hai/render/anime/build/
+# regenerable caches
+**/canva_clips/frames/
+aakhri-local/ep01/build/depth/
+aakhri-local/ep01/build/lp/
+aakhri-local/ep01/build/clipframes/
+*.log

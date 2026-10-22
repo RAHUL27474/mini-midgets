@@ -1,0 +1,113 @@
+{
+ "model": "D:\\ai\\models\\flux2-klein-4b-int4-ov",
+ "width": 576,
+ "height": 1024,
+ "steps": 4,
+ "items": [
+  {
+   "id": "s05",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Medium shot inside an empty Mumbai local train coach at night, green bench seats, steel grab handles, flickering white tube lights, rain on the windows, city lights streaking past: sitting on the seat directly opposite the camera is an elderly Indian man of 68 with neat white hair, a thick white moustache, round gold wire-rimmed glasses, a brown wool sweater vest over a white kurta and an old brown leather satchel, lit by a soft warm amber glow. Satchel on his lap, hands folded on it, a gentle knowing smile. He alone is lit warm amber, everything else cold blue. Blurred raindrops on glass in the foreground.",
+   "refs": [],
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep01\\shots_ai\\s05.png"
+  },
+  {
+   "id": "s10",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Close-up of Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, tired kind brown eyes, wearing light-blue nurse scrubs under a loose grey cardigan, a hospital ID lanyard and a canvas tote bag, looking up from a ticket in her hands with an amused, curious half-laugh, about to speak, night train interior with cold blue light.",
+   "refs": [],
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep01\\shots_ai\\s10.png"
+  },
+  {
+   "id": "s01",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Medium-wide shot: Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, tired kind brown eyes, wearing light-blue nurse scrubs under a loose grey cardigan, a hospital ID lanyard and a canvas tote bag, stepping out of glowing hospital glass doors at night in heavy rain, checking her cracked silver wristwatch, exhausted. A red EMERGENCY sign glows above, wet ground reflects cyan and red light.",
+   "refs": [],
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep01\\shots_ai\\s01.png"
+  },
+  {
+   "id": "s07",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Over-the-shoulder shot from behind a young woman's blurred dark braid and grey cardigan: an elderly Indian man of 68 with neat white hair, a thick white moustache, round gold wire-rimmed glasses, a brown wool sweater vest over a white kurta and an old brown leather satchel, lit by a soft warm amber glow, leaning forward and holding out a small old yellowed cardboard train ticket between two fingers, kind smile, warm light, inside an empty Mumbai local train coach at night, green bench seats, steel grab handles, flickering white tube lights, rain on the windows, city lights streaking past.",
+   "refs": [],
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep01\\shots_ai\\s07.png"
+  },
+  {
+   "id": "s13",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Two-shot inside an empty Mumbai local train coach at night, green bench seats, steel grab handles, flickering white tube lights, rain on the windows, city lights streaking past: Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, tired kind brown eyes, wearing light-blue nurse scrubs under a loose grey cardigan, a hospital ID lanyard and a canvas tote bag, shaken, pointing at an empty seat, while a middle-aged Indian railway ticket checker with short black hair greying at the temples, a black moustache, a black coat over a white shirt and a brass T.C. badge, punches her train pass with a ticket punch and looks puzzled.",
+   "refs": [],
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep01\\shots_ai\\s13.png"
+  },
+  {
+   "id": "s09",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Extreme close-up, top down: a young Indian woman's brown palm holding an old yellowed Indian Railways cardboard ticket with faded print reading \"VT - THANE 14-07-1975 SEAT 0\", one corner scorched black. A cracked silver wristwatch on her wrist and the grey cardigan cuff. Dim train light.",
+   "refs": [],
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep01\\shots_ai\\s09.png"
+  },
+  {
+   "id": "s14",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Medium close-up, slightly low angle: a middle-aged Indian railway ticket checker with short black hair greying at the temples, a black moustache, a black coat over a white shirt and a brass T.C. badge, frowning and glancing around an empty night train coach, uneasy, flickering tube light above.",
+   "refs": [],
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep01\\shots_ai\\s14.png"
+  },
+  {
+   "id": "s06",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Close-up side profile of Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, tired kind brown eyes, wearing light-blue nurse scrubs under a loose grey cardigan, a hospital ID lanyard and a canvas tote bag, leaning her head on a rain-streaked train window at night, orange and white city lights streaking across her face, tired heavy eyes, polite faint smile.",
+   "refs": [],
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep01\\shots_ai\\s06.png"
+  },
+  {
+   "id": "s08",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Medium close-up of Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, tired kind brown eyes, wearing light-blue nurse scrubs under a loose grey cardigan, a hospital ID lanyard and a canvas tote bag, sitting in a night train, taking an old yellowed cardboard train ticket from an elderly hand reaching in from the right, puzzled polite smile, warm light touching one side of her face.",
+   "refs": [],
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep01\\shots_ai\\s08.png"
+  },
+  {
+   "id": "s15",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Extreme close-up: a young Indian woman's trembling brown hand holding an old yellowed train ticket, a cracked silver wristwatch on her wrist clearly showing 1:12, grey cardigan cuff, dark night train background, dramatic light.",
+   "refs": [],
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep01\\shots_ai\\s15.png"
+  },
+  {
+   "id": "s04",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Wide shot inside an empty Mumbai local train coach at night, green bench seats, steel grab handles, flickering white tube lights, rain on the windows, city lights streaking past: Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, tired kind brown eyes, wearing light-blue nurse scrubs under a loose grey cardigan, a hospital ID lanyard and a canvas tote bag, slumped exhausted on a green seat by the window, head resting against the glass, eyes half closed. One tube light flickers.",
+   "refs": [],
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep01\\shots_ai\\s04.png"
+  },
+  {
+   "id": "s11",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Point-of-view shot inside an empty Mumbai local train coach at night, green bench seats, steel grab handles, flickering white tube lights, rain on the windows, city lights streaking past: the green bench seat opposite is completely empty, a faint dent where someone sat, rain streaming down the dark window behind it. Eerie cold blue light, no people.",
+   "refs": [],
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep01\\shots_ai\\s11.png"
+  },
+  {
+   "id": "s03",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Low angle at track level on an empty Mumbai railway platform at night in heavy rain: a white and purple Mumbai suburban local train arrives, its single bright headlight blooming, rain lit like needles. A lone small figure of a nurse in a grey cardigan stands at the platform edge.",
+   "refs": [],
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep01\\shots_ai\\s03.png"
+  },
+  {
+   "id": "s12",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Wide shot from the far end of an empty night Mumbai local train coach: Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, tired kind brown eyes, wearing light-blue nurse scrubs under a loose grey cardigan, a hospital ID lanyard and a canvas tote bag, standing alone in the middle of the aisle, looking around anxiously, open doors on both sides show only black rain, swaying grab handles.",
+   "refs": [],
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep01\\shots_ai\\s12.png"
+  },
+  {
+   "id": "s02",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. High angle looking down a wet railway station staircase at night: Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, tired kind brown eyes, wearing light-blue nurse scrubs under a loose grey cardigan, a hospital ID lanyard and a canvas tote bag, running down the steps, braid swinging, motion blur. A large old platform clock at the bottom shows 1:11. Yellow sodium lights, puddles.",
+   "refs": [],
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep01\\shots_ai\\s02.png"
+  }
+ ]
+}

@@ -23,9 +23,9 @@ module.exports = ({ W, H, ui }) => {
       ['k1a', 2.3, 'kabir'], ['k1b', '+0.55', 'kabir'],
       ['s1a', 18.25, 'sameer'], ['s1b', '+0.2', 'sameer'],
       ['y1', '+0.25', 'young'],
-      ['s2', 26.7, 'sameer'],
+      ['s2', 25.9, 'sameer'],
       ['k2a', 34.5, 'kabir'], ['k2b', '+0.7', 'kabir'],
-      ['k3a', 48.4, 'whisper'], ['k3b', '+0.9', 'whisper'],
+      ['k3a', 48.4, 'whisper'], ['k3b', '+0.6', 'whisper'],
     ],
     echo: ['sameer', 'young'],               // flashback lines get a little room echo
     accent: { sameer: '#ffb347', young: '#8fd3ff' },

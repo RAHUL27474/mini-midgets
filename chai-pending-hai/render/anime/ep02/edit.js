@@ -33,7 +33,7 @@ module.exports = ({ W, H, ui }) => {
       ['m_gold', 39.5, 0, 16.0, 2.0, 1.5, 0.32],
     ],
     subY: () => 1380,
-    clip: s => ({ dirs: ['a', 'b', 'c', 'd', 'e'].map(g => `cph2-anim-${g}`), id: s.id, ss: 0, pre: '' }),
+    clip: s => ({ dirs: [...['a', 'b', 'c', 'd'].map(g => `cph2c-anim-${g}`), ...['a', 'b', 'c', 'd', 'e'].map(g => `cph2-anim-${g}`)], id: s.id, ss: 0, pre: '' }),  // Canva-cast clips first
     grade: s => s.grade === 'dawn' ? 'eq=saturation=1.06:gamma=1.03,colorbalance=rs=0.03:bs=-0.02,vignette=PI/6'
       : s.grade === 'home' ? 'eq=saturation=1.0,colorbalance=rs=0.02:bs=0.02,vignette=PI/5'
       : 'eq=saturation=0.92,colorbalance=bs=0.05:rs=-0.02,vignette=PI/5',

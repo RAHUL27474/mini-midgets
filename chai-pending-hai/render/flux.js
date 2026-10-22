@@ -6,18 +6,22 @@ const fs = require('fs');
 const args = process.argv.slice(2);
 const ri = args.indexOf('--ref'), ref = ri >= 0 ? args.splice(ri, 2)[1] : null;
 const [out, prompt, seed = '7', w = '768', h = '1344'] = args;
+// free HF account token (HF_TOKEN or ~/.cache/huggingface/token) gives ZeroGPU quota; anonymous quota runs out fast
+const TOKF = require('path').join(require('os').homedir(), '.cache', 'huggingface', 'token');
+const HF = process.env.HF_TOKEN || (fs.existsSync(TOKF) ? fs.readFileSync(TOKF, 'utf8').trim() : undefined);
+const OPTS = HF ? { token: HF } : {};
 const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
 (async () => {
   let job;
   if (ref) {
-    const app = await Client.connect('black-forest-labs/FLUX.1-Kontext-Dev');
+    const app = await Client.connect('black-forest-labs/FLUX.1-Kontext-Dev', OPTS);
     job = app.submit('/infer', { input_image: handle_file(new Blob([fs.readFileSync(ref)])), prompt, seed: Number(seed), randomize_seed: false, guidance_scale: 2.5, steps: 28 });
   } else {
-    const app = await Client.connect('black-forest-labs/FLUX.1-schnell');
+    const app = await Client.connect('black-forest-labs/FLUX.1-schnell', OPTS);
     job = app.submit('/infer', { prompt, seed: Number(seed), randomize_seed: false, width: Number(w), height: Number(h), num_inference_steps: 4 });
   }
   for await (const msg of job) {
-    if (msg.type === 'status' && msg.stage === 'error') throw new Error(msg.message || 'space error');
+    if (msg.type === 'status' && msg.stage === 'error') throw new Error(msg.message || msg.title || 'space error');
     if (msg.type === 'data') {
       const flat = JSON.stringify(msg.data), m = flat.match(/"url":"(https?:[^"]+)"/); if (!m) throw new Error('no url: ' + flat.slice(0, 300));
       const r = await fetch(m[1]); fs.writeFileSync(out, Buffer.from(await r.arrayBuffer())); log('saved', out); process.exit(0);

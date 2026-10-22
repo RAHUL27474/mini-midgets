@@ -22,7 +22,7 @@ for (const s of shots) {
       console.log(s.id, engine, secs + 's');
       execFileSync('node', [I2V, jpg, out, STYLE + s.motion, secs, engine], { stdio: 'inherit', timeout: 900000 });
       if (fs.existsSync(out)) break;
-    } catch (e) { console.log(s.id, engine, 'failed:', e.message.split('\n')[0]); }
+    } catch (e) { console.log(s.id, engine, 'failed:', e.message.split('\n')[0]); execFileSync('node', ['-e', 'setTimeout(()=>{},45000)']); } // back off: ZeroGPU rejects bursts
   }
   if (!fs.existsSync(out)) console.log(s.id, 'NO CLIP');
 }

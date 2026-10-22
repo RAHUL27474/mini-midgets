@@ -1,28 +1,18 @@
 // Final edit for the anime episode: dialogue + MusicGen score + SFX mix, phone-UI / newspaper / subtitle overlays, 60fps masters.
-// node anime/compose.js [--audio-only] [--preview]
-//   in : kaggle_out/cph-anim-*/clips/<id>.mp4, kaggle_out/cph-voicecpu/voice/*.wav, kaggle_out/cph-music/music/*.wav, anime/build/sfx.wav, anime/picks.json
-//   out: anime/out/ep01_shorts_1080x1920_60fps.mp4, anime/out/ep01_youtube_1920x1080_60fps.mp4
+// node anime/compose.js [--ep ep02] [--audio-only] [--preview]   (episode config: anime/<ep>/edit.js, default ep01)
+//   in : anime/<ep>/edit.js + its shots.json, voice.json, picks.json ("voice": "<kaggle job>/<take>.wav"), build/sfx.wav; clips and takes under kaggle_out/
+//   out: anime/out/<out>_shorts_1080x1920_60fps.mp4 and <out>_youtube_1920x1080_60fps.mp4 (<out> from the episode config)
 const fs = require('fs'), path = require('path'), { spawn, execFileSync } = require('child_process');
 const { createCanvas, GlobalFonts, loadImage } = require('@napi-rs/canvas');
 const FF = require('ffmpeg-static');
-const ROOT = path.join(__dirname, '..'), BUILD = path.join(__dirname, 'build'), OUT = path.join(__dirname, 'out');
-fs.mkdirSync(BUILD, { recursive: true }); fs.mkdirSync(OUT, { recursive: true });
-const SHOTS = JSON.parse(fs.readFileSync(path.join(__dirname, 'shots.json'), 'utf8')).shots;
-const VOICE = JSON.parse(fs.readFileSync(path.join(__dirname, 'voice.json'), 'utf8')).lines;
-const PICKS = JSON.parse(fs.readFileSync(path.join(__dirname, 'picks.json'), 'utf8'));
 const W = 1080, H = 1920, FPS = 60, DUR = 60, SR = 48000, N = SR * DUR;
+const EP = process.argv.includes('--ep') ? process.argv[process.argv.indexOf('--ep') + 1] : 'ep01';
+let E, BUILD, SHOTS, VOICE, PICKS;  // set by loadEpisode() once the drawing helpers below exist
+const ROOT = path.join(__dirname, '..'), OUT = path.join(__dirname, 'out');
+fs.mkdirSync(OUT, { recursive: true });
 const PREVIEW = process.argv.includes('--preview');
 const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
 
-// ---------- dialogue timeline: [segment id, start s, who, subtitle]
-const LINES = [
-  ['k1a', 2.3, 'kabir'], ['k1b', '+0.55', 'kabir'],
-  ['s1a', 18.25, 'sameer'], ['s1b', '+0.2', 'sameer'],
-  ['y1', '+0.25', 'young'],
-  ['s2', 26.7, 'sameer'],
-  ['k2a', 34.5, 'kabir'], ['k2b', '+0.7', 'kabir'],
-  ['k3a', 48.4, 'whisper'], ['k3b', '+0.9', 'whisper'],
-];
 
 // ---------- audio helpers: everything decoded through ffmpeg to mono f32 @48k
 function decode(file, af) {
@@ -81,7 +71,7 @@ function mixAudio() {
   };
   // dialogue
   const placed = []; let t = 0;
-  for (const [id, at, who] of LINES) {
+  for (const [id, at, who] of E.lines) {
     const [job, file] = PICKS.voice[id].split('/');  // "<kaggle job>/<take>.wav"
     const f = path.join(ROOT, 'kaggle_out', job, 'voice', file);
     const { a, off } = trimSilence(decode(f, VOICE_FX)), start = typeof at === 'string' ? t + Number(at) : at, dur = a.length / SR;
@@ -90,23 +80,16 @@ function mixAudio() {
     const words = alignWords(text, take.words || [], off, dur).map(w => ({ w: w.w, s: +(start + w.s).toFixed(3), e: +(start + w.e).toFixed(3) }));
     const g = (who === 'whisper' ? 0.62 : 0.8) / peak(a);
     add(a, start, g);
-    if (who === 'sameer' || who === 'young') { add(a, start + 0.06, g * 0.16, -0.5); add(a, start + 0.11, g * 0.09, 0.5); } // flashback room echo
+    if (E.echo.includes(who)) { add(a, start + 0.06, g * 0.16, -0.5); add(a, start + 0.11, g * 0.09, 0.5); } // flashback room echo
     for (let i = Math.round((start - 0.2) * SR); i < Math.round((start + dur + 0.25) * SR); i++) if (i >= 0 && i < N) voiceEnv[i] = 1;
     placed.push({ id, start: +start.toFixed(3), end: +(start + dur).toFixed(3), dur: +dur.toFixed(3), who, text, words });
     t = start + dur;
   }
   const dj = path.join(BUILD, 'dialogue.json'), dtext = JSON.stringify(placed, null, 1);
   if (!fs.existsSync(dj) || fs.readFileSync(dj, 'utf8') !== dtext) fs.writeFileSync(dj, dtext); // unchanged timing keeps the cached overlay valid
-  // score: [music id, timeline start, source offset, length, fade in, fade out, gain]
-  const M = [
-    ['m_night', 3.0, 0, 12.4, 2.5, 1.2, 0.30],
-    ['m_gold', 14.8, 0, 15.6, 0.8, 1.6, 0.34],
-    ['m_night', 30.4, 12, 9.6, 2.0, 0.4, 0.22],   // music drops to silence 40-45
-    ['m_tense', 45.6, 0, 14.4, 2.5, 3.0, 0.34],
-  ];
   const mus = new Float32Array(N);
-  for (const [id, t0, off, len, fi, fo, g] of M) {
-    const a = decode(path.join(ROOT, 'kaggle_out', 'cph-music', 'music', PICKS.music[id])).subarray(Math.round(off * SR));
+  for (const [id, t0, off, len, fi, fo, g] of E.music) {
+    const a = decode(path.join(ROOT, 'kaggle_out', E.musicJob || 'cph-music', 'music', PICKS.music[id])).subarray(Math.round(off * SR));
     const n = Math.min(a.length, Math.round(len * SR)), gg = g / peak(a);
     for (let i = 0; i < n; i++) {
       const tt = i / SR, env = Math.min(1, tt / fi, (n / SR - tt) / fo);
@@ -155,17 +138,6 @@ function bubble(c, x, y, w, text, mine, meta, tick) {
 }
 function wrap(c, text, maxW) { const out = []; let cur = ''; for (const w of text.split(' ')) { const t = cur ? cur + ' ' + w : w; if (c.measureText(t).width > maxW && cur) { out.push(cur); cur = w; } else cur = t; } if (cur) out.push(cur); return out; }
 
-const CHAT = [
-  ['Happy birthday bhai. Chai pending hai ☕', false, '12:00 AM · 2022'],
-  ['Kahan hai tu? Sab theek hai? Maa ko bata de kam se kam…', true, '12:04 AM', 1],
-  ['Happy birthday bhai. Chai pending hai ☕', false, '12:00 AM · 2023'],
-  ['Aaj tapri gaya tha. Bhaiya ne tera poocha.', true, '12:10 AM', 1],
-  ['Happy birthday bhai. Chai pending hai ☕', false, '12:00 AM · 2024'],
-  ['Bas ek baar call kar le yaar.', true, '12:02 AM', 1],
-  ['Happy birthday bhai. Chai pending hai ☕', false, '12:00 AM · 2025'],
-];
-const MSG = 'Kahan hai tu? Bas ek baar bata de.';
-
 function phoneFrame(c, cx, cy, w, h, a, draw) {
   c.save(); c.globalAlpha = a;
   shadowBox(c, cx - w / 2 - 14, cy - h / 2 - 14, w + 28, h + 28, 70, '#0b0d10');
@@ -182,88 +154,12 @@ function chatHeader(c, w) {
 
 function overlay(c, T, dlg) {
   c.clearRect(0, 0, W, H);
-  // S01-S02: lock screen clock + notification
-  if (T < 5.4) {
-    const a = win(T, 0.5, 5.4, 0.4, 0.4);
-    c.save(); c.globalAlpha = a; c.textAlign = 'center'; c.fillStyle = 'rgba(255,255,255,0.92)'; c.shadowColor = 'rgba(80,140,255,0.8)'; c.shadowBlur = 30;
-    c.font = '170px Segoe'; c.fillText(T < 1.3 ? '11:59' : '12:00', W / 2, 360);
-    c.font = '40px Segoe'; c.fillText('Monday, 14 July', W / 2, 430); c.restore();
-    const n = ease((T - 1.5) / 0.35);
-    if (n > 0) {
-      const y = 520 - (1 - n) * 60;
-      shadowBox(c, 70, y, W - 140, 190, 40, 'rgba(32,38,46,0.92)', a * n);
-      c.save(); c.globalAlpha = a * n; c.fillStyle = '#25d366'; rr(c, 106, y + 36, 64, 64, 16); c.fill();
-      c.fillStyle = '#fff'; c.font = '30px SegoeB'; c.fillText('W', 120, y + 80);
-      c.font = '36px SegoeB, Emoji'; c.fillText('Sameer 🛵', 196, y + 74); c.font = '26px Segoe'; c.fillStyle = '#aab'; c.fillText('now', W - 170, y + 74);
-      c.font = '36px Segoe, Emoji'; c.fillStyle = '#e9edef'; c.fillText('Happy birthday bhai. Chai pending hai ☕', 106, y + 146); c.restore();
-    }
-  }
-  // S04: scrolling chat history
-  if (T > 8.0 && T < 11.4) {
-    const a = win(T, 8.0, 11.4, 0.3, 0.3), sc = ease((T - 8.3) / 2.8);
-    phoneFrame(c, W / 2, 830, 700, 1120, a, (w, h) => {
-      let y = 180 - sc * 520;
-      for (const [txt, mine, meta, tk] of CHAT) { const bw = 560; y += bubble(c, mine ? w - bw - 30 : 30, y, bw, txt, mine, meta, tk) + 24; }
-      chatHeader(c, w);
-    });
-  }
-  // S05: typing the reply, send, single grey tick
-  if (T > 11.2 && T < 15.0) {
-    const a = win(T, 11.2, 15.0, 0.3, 0.35);
-    const typed = MSG.slice(0, Math.max(0, Math.min(MSG.length, Math.floor((T - 11.4) / 2.0 * MSG.length))));
-    const sent = T > 13.6;
-    c.save(); c.globalAlpha = a;
-    if (!sent) {
-      shadowBox(c, 60, 1500, W - 220, 110, 55, '#2a3942');
-      c.fillStyle = '#e9edef'; c.font = '38px Segoe'; c.fillText(typed + (Math.floor(T * 2.5) % 2 ? '|' : ''), 110, 1568);
-      c.beginPath(); c.arc(W - 105, 1555, 55, 0, 7); c.fillStyle = '#00a884'; c.fill();
-      c.fillStyle = '#fff'; c.beginPath(); c.moveTo(W - 125, 1530); c.lineTo(W - 80, 1555); c.lineTo(W - 125, 1580); c.closePath(); c.fill();
-    } else {
-      const k = ease((T - 13.6) / 0.3);
-      c.globalAlpha = a * k; c.translate(0, (1 - k) * 80);
-      bubble(c, W - 700, 1440, 640, MSG, true, '12:01 AM', 1);
-    }
-    c.restore();
-  }
-  // S06: white light-leak flash into the flashback; S09->S10 warm-to-cold drain
-  if (T > 14.6 && T < 15.6) { c.fillStyle = `rgba(255,236,200,${Math.min(ease((T - 14.6) / 0.4), ease((15.6 - T) / 0.6)) * 0.95})`; c.fillRect(0, 0, W, H); }
-  if (T > 29.6 && T < 30.8) { c.fillStyle = `rgba(20,30,70,${Math.min(ease((T - 29.6) / 0.6), ease((30.8 - T) / 0.6)) * 0.9})`; c.fillRect(0, 0, W, H); }
-  // S11: newspaper headline
-  if (T > 35.0 && T < 40.0) {
-    const a = win(T, 35.0, 40.0, 0.5, 0.4);
-    c.save(); c.globalAlpha = a; c.translate(W / 2, 360); c.rotate(-0.025);
-    shadowBox(c, -440, -120, 880, 270, 6, '#efe3c2');
-    c.fillStyle = '#1b1712'; c.textAlign = 'center'; c.font = '62px NirmalaB'; c.fillText('युवक लापता', 0, -30);
-    c.font = '44px NirmalaB'; c.fillText('नदी किनारे मिला स्कूटर', 0, 40);
-    c.font = '32px Nirmala'; c.fillStyle = '#4a4030'; c.fillText('पुलिस ने फ़ोन बरामद किया', 0, 100); c.restore();
-  }
-  // S13: the highlighted line (bell hit at 45.0)
-  if (T > 45.0 && T < 48.2) {
-    const a = win(T, 45.0, 48.2, 0.08, 0.3), hl = ease((T - 45.25) / 0.9);
-    c.save(); c.globalAlpha = a; c.translate(W / 2, 900);
-    shadowBox(c, -470, -150, 940, 300, 6, '#efe3c2');
-    c.font = '46px Nirmala'; c.textAlign = 'left';
-    const L1 = 'पुलिस ने बताया कि फ़ोन युवक की', L2 = 'माँ, शांता देवी, को सौंपा गया।';
-    const w2 = c.measureText(L2).width;
-    c.fillStyle = 'rgba(255,214,0,0.75)'; c.fillRect(-420, 18, w2 * hl, 66);
-    c.fillStyle = '#1b1712'; c.fillText(L1, -420, -20); c.fillText(L2, -420, 70); c.restore();
-  }
-  // S16: the reply turns "Seen"
-  if (T > 57.0 && T < 59.4) {
-    const a = win(T, 57.0, 59.4, 0.3, 0.25), seen = T > 58.0;
-    phoneFrame(c, W / 2, 960, 760, 760, a, (w, h) => {
-      chatHeader(c, w);
-      const bh = bubble(c, w - 670, 330, 640, MSG, true, '12:01 AM', seen ? 3 : 1);
-      if (seen) { c.globalAlpha *= ease((T - 58.0) / 0.3); c.fillStyle = '#53bdeb'; c.font = '30px SegoeB'; c.textAlign = 'right'; c.fillText('Seen', w - 34, 330 + bh + 50); }
-    });
-  }
-  // end card
-  if (T > 59.35) { c.fillStyle = '#000'; c.fillRect(0, 0, W, H); c.fillStyle = '#fff'; c.textAlign = 'center'; c.font = '90px SegoeB'; c.globalAlpha = ease((T - 59.45) / 0.25); c.fillText('Part 2 →', W / 2, H / 2 + 30); c.globalAlpha = 1; c.textAlign = 'left'; }
+  E.draw(c, T);
   // subtitles: short phrases timed to the speech, the word being spoken highlighted (lower-middle, clear of the Shorts/Reels UI)
-  const y0 = T > 7.8 && T < 11.6 ? 1560 : 1380; // below the chat phone while it is on screen
+  const y0 = E.subY(T);
   for (const g of subGroups(dlg)) {
     if (T < g.s || T > g.e) continue;
-    const a = win(T, g.s, g.e, 0.08, 0.12), accent = g.who === 'sameer' ? '#ffb347' : g.who === 'young' ? '#8fd3ff' : '#ffd84a';
+    const a = win(T, g.s, g.e, 0.08, 0.12), accent = E.accent[g.who] || '#ffd84a';
     c.save(); c.globalAlpha = a; c.font = '62px NirmalaB'; c.lineJoin = 'round'; c.textAlign = 'left'; c.textBaseline = 'alphabetic';
     const sp = c.measureText(' ').width, ws = g.words.map(w => c.measureText(w.w).width);
     const rows = [[]]; let rw = 0;
@@ -316,7 +212,16 @@ function run(args) {
   return new Promise((res, rej) => { const p = spawn(FF, args, { stdio: ['ignore', 'inherit', 'inherit'] }); p.on('close', c => c ? rej(new Error('ffmpeg ' + c)) : res()); });
 }
 
+function loadEpisode() {
+  E = require(path.join(__dirname, EP, 'edit.js'))({ W, H, ui: { ease, win, rr, shadowBox, ticks, bubble, wrap, phoneFrame, chatHeader } });
+  BUILD = path.join(E.dir, 'build'); fs.mkdirSync(BUILD, { recursive: true });
+  SHOTS = JSON.parse(fs.readFileSync(path.join(E.dir, 'shots.json'), 'utf8')).shots;
+  VOICE = JSON.parse(fs.readFileSync(path.join(E.dir, 'voice.json'), 'utf8')).lines;
+  PICKS = JSON.parse(fs.readFileSync(path.join(E.dir, 'picks.json'), 'utf8'));
+}
+
 (async () => {
+  loadEpisode();
   const dlg = mixAudio();
   if (process.argv.includes('--audio-only')) return;
   if (PREVIEW) { // stills of the overlay at key moments, for checking layout
@@ -326,32 +231,27 @@ function run(args) {
   }
   // the overlay only depends on the dialogue timing, so reuse it when it is newer than both dialogue.json and this script
   const ov = path.join(BUILD, 'overlay.mov');
-  if (!fs.existsSync(ov) || fs.statSync(ov).mtimeMs < Math.max(fs.statSync(path.join(BUILD, 'dialogue.json')).mtimeMs, fs.statSync(__filename).mtimeMs)) await renderOverlay(dlg);
+  if (!fs.existsSync(ov) || fs.statSync(ov).mtimeMs < Math.max(fs.statSync(path.join(BUILD, 'dialogue.json')).mtimeMs, fs.statSync(__filename).mtimeMs, fs.statSync(path.join(__dirname, EP, 'edit.js')).mtimeMs)) await renderOverlay(dlg);
   // clips -> one 60fps track, per-shot grade, overlay, audio
   const inputs = [], parts = [];
   SHOTS.forEach((s, i) => {
-    // s13 (twist close-up) is a punched-in reuse of the end of s11's newspaper clip; the highlighted line is an overlay
-    const src = s.id === 's13' ? 's11' : s.id;
-    const clip = ['a', 'b', 'c', 'd', src].map(g => path.join(ROOT, 'kaggle_out', `cph-anim-${g}`, 'clips', `${src}.mp4`)).find(f => fs.existsSync(f));
+    const { dirs, id, ss, pre } = E.clip(s);
+    const clip = dirs.map(d => path.join(ROOT, 'kaggle_out', d, 'clips', `${id}.mp4`)).find(f => fs.existsSync(f));
     if (!clip) throw new Error('missing clip ' + s.id);
-    inputs.push(...(s.id === 's13' ? ['-ss', '2.8'] : []), '-i', clip);
-    const grade = s.grade === 'gold'
-      ? 'eq=saturation=1.08:gamma=1.02,colorbalance=rs=0.04:bs=-0.04,noise=alls=5:allf=t,vignette=PI/5'
-      : 'eq=saturation=0.92,colorbalance=bs=0.04:rs=-0.02,vignette=PI/5';
-    const punch = s.id === 's13' ? `scale=${W * 1.7}:${H * 1.7},crop=${W}:${H}:(iw-${W})/2:(ih-${H})*0.6,boxblur=12:2,` : s.id === 's11' ? `boxblur=10:2:enable='gte(t,1.8)',` : '';
-    parts.push(`[${i}:v]${punch}scale=${W}:${H},setsar=1,fps=${FPS},trim=duration=${s.dur},setpts=PTS-STARTPTS,${grade}[v${i}]`);
+    inputs.push(...(ss ? ['-ss', String(ss)] : []), '-i', clip);
+    parts.push(`[${i}:v]${pre}scale=${W}:${H},setsar=1,fps=${FPS},trim=duration=${s.dur},setpts=PTS-STARTPTS,${E.grade(s)}[v${i}]`);
   });
   const n = SHOTS.length;
   const fc = parts.join(';') + ';' + SHOTS.map((_, i) => `[v${i}]`).join('') + `concat=n=${n}:v=1:a=0[base];[base][${n}:v]overlay=format=auto[vert];` +
     '[vert]format=yuv420p[outv]';
-  const vert = path.join(OUT, 'ep01_shorts_1080x1920_60fps.mp4');
+  const vert = path.join(OUT, `${E.out}_shorts_1080x1920_60fps.mp4`);
   await run(['-v', 'error', '-stats', '-y', ...inputs, '-i', path.join(BUILD, 'overlay.mov'), '-i', path.join(BUILD, 'mix.wav'),
     '-filter_complex', fc,
     '-map', '[outv]', '-map', `${n + 1}:a`, '-c:v', 'libx264', '-preset', 'slow', '-crf', '16', '-profile:v', 'high', '-r', String(FPS),
     '-c:a', 'aac', '-b:a', '320k', '-t', String(DUR), '-movflags', '+faststart', vert]);
   log('wrote', vert);
   // 16:9 YouTube master: vertical frame centred over a blurred, darkened fill of itself
-  const wide = path.join(OUT, 'ep01_youtube_1920x1080_60fps.mp4');
+  const wide = path.join(OUT, `${E.out}_youtube_1920x1080_60fps.mp4`);
   await run(['-v', 'error', '-stats', '-y', '-i', vert, '-filter_complex',
     '[0:v]split[a][b];[a]scale=1920:-2,crop=1920:1080,setsar=1,gblur=sigma=40,eq=brightness=-0.12[bg];[b]scale=-2:1080,setsar=1[fg];[bg][fg]overlay=(W-w)/2:0,setsar=1,format=yuv420p[v]',
     '-map', '[v]', '-map', '0:a', '-c:v', 'libx264', '-preset', 'slow', '-crf', '17', '-r', String(FPS), '-c:a', 'copy', '-movflags', '+faststart', wide]);

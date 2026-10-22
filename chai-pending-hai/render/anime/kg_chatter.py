@@ -12,7 +12,7 @@ from chatterbox.mtl_tts import ChatterboxMultilingualTTS
 from transformers import pipeline
 
 V = json.loads(r'''__VOICE__''')
-JOB = json.loads(r'''__JOB__''')  # {"ids": [...], "seeds": [0, 1], "refs_per_line": 2, "asr": "openai/whisper-medium"}
+JOB = json.loads(r'''__JOB__''')  # {"ids": [...], "seeds": [0, 1], "refs_per_line": 2, "asr": "openai/whisper-medium", "skip_refs": [clip names that crash the kernel]}
 OUT = '/kaggle/working/voice'; os.makedirs(f'{OUT}/refs', exist_ok=True)
 dev = 'cuda' if torch.cuda.is_available() else 'cpu'
 torch.set_num_threads(os.cpu_count())
@@ -22,7 +22,7 @@ log = lambda *a: print(time.strftime('%H:%M:%S'), *a, flush=True)
 DS = 'https://huggingface.co/datasets/sumedhu/hindi-emotion-voice-references'
 def refs_for(gender, speaker, emotion, n):
     tree = json.load(urllib.request.urlopen(f'https://huggingface.co/api/datasets/sumedhu/hindi-emotion-voice-references/tree/main/hindi/{gender}/{emotion}'))
-    names = sorted(x['path'] for x in tree if x['path'].split('/')[-1].startswith(speaker + '_'))
+    names = sorted(x['path'] for x in tree if x['path'].split('/')[-1].startswith(speaker + '_') and x['path'].split('/')[-1] not in JOB.get('skip_refs', []))
     random.Random(f'{speaker}{emotion}').shuffle(names)
     got = []
     for p in names[:12]:

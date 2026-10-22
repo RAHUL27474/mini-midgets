@@ -1,0 +1,68 @@
+{
+ "model": "D:\\ai\\models\\flux2-klein-4b-int4-ov",
+ "width": 576,
+ "height": 1024,
+ "steps": 4,
+ "items": [
+  {
+   "id": "meera_1",
+   "seed": 1,
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\refs\\cast\\options\\meera_1.png",
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Character portrait of Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, tired kind brown eyes, wearing light-blue nurse scrubs under a loose grey cardigan, a hospital ID lanyard and a canvas tote bag. Upper body, facing the viewer, gentle tired expression, standing outside a hospital at night in light rain, cold blue light with a warm rim light."
+  },
+  {
+   "id": "oldman_1",
+   "seed": 1,
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\refs\\cast\\options\\oldman_1.png",
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Character portrait of an elderly Indian man of 68 with neat white hair, a thick white moustache, round gold wire-rimmed glasses, a brown wool sweater vest over a white kurta and an old brown leather satchel, lit by a soft warm amber glow. Upper body, sitting on a green train seat with the satchel on his lap, kind gentle smile, looking at the viewer, night train interior."
+  },
+  {
+   "id": "tc_1",
+   "seed": 1,
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\refs\\cast\\options\\tc_1.png",
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Character portrait of a middle-aged Indian railway ticket checker with short black hair greying at the temples, a black moustache, a black coat over a white shirt and a brass T.C. badge. Upper body, holding a ticket punch, stern frown, inside a night train coach under fluorescent light."
+  },
+  {
+   "id": "meera_2",
+   "seed": 2,
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\refs\\cast\\options\\meera_2.png",
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Character portrait of Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, tired kind brown eyes, wearing light-blue nurse scrubs under a loose grey cardigan, a hospital ID lanyard and a canvas tote bag. Upper body, facing the viewer, gentle tired expression, standing outside a hospital at night in light rain, cold blue light with a warm rim light."
+  },
+  {
+   "id": "oldman_2",
+   "seed": 2,
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\refs\\cast\\options\\oldman_2.png",
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Character portrait of an elderly Indian man of 68 with neat white hair, a thick white moustache, round gold wire-rimmed glasses, a brown wool sweater vest over a white kurta and an old brown leather satchel, lit by a soft warm amber glow. Upper body, sitting on a green train seat with the satchel on his lap, kind gentle smile, looking at the viewer, night train interior."
+  },
+  {
+   "id": "tc_2",
+   "seed": 2,
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\refs\\cast\\options\\tc_2.png",
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Character portrait of a middle-aged Indian railway ticket checker with short black hair greying at the temples, a black moustache, a black coat over a white shirt and a brass T.C. badge. Upper body, holding a ticket punch, stern frown, inside a night train coach under fluorescent light."
+  },
+  {
+   "id": "meera_3",
+   "seed": 3,
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\refs\\cast\\options\\meera_3.png",
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Character portrait of Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, tired kind brown eyes, wearing light-blue nurse scrubs under a loose grey cardigan, a hospital ID lanyard and a canvas tote bag. Upper body, facing the viewer, gentle tired expression, standing outside a hospital at night in light rain, cold blue light with a warm rim light."
+  },
+  {
+   "id": "oldman_3",
+   "seed": 3,
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\refs\\cast\\options\\oldman_3.png",
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Character portrait of an elderly Indian man of 68 with neat white hair, a thick white moustache, round gold wire-rimmed glasses, a brown wool sweater vest over a white kurta and an old brown leather satchel, lit by a soft warm amber glow. Upper body, sitting on a green train seat with the satchel on his lap, kind gentle smile, looking at the viewer, night train interior."
+  },
+  {
+   "id": "meera_4",
+   "seed": 4,
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\refs\\cast\\options\\meera_4.png",
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Character portrait of Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, tired kind brown eyes, wearing light-blue nurse scrubs under a loose grey cardigan, a hospital ID lanyard and a canvas tote bag. Upper body, facing the viewer, gentle tired expression, standing outside a hospital at night in light rain, cold blue light with a warm rim light."
+  },
+  {
+   "id": "oldman_4",
+   "seed": 4,
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\refs\\cast\\options\\oldman_4.png",
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Character portrait of an elderly Indian man of 68 with neat white hair, a thick white moustache, round gold wire-rimmed glasses, a brown wool sweater vest over a white kurta and an old brown leather satchel, lit by a soft warm amber glow. Upper body, sitting on a green train seat with the satchel on his lap, kind gentle smile, looking at the viewer, night train interior."
+  }
+ ]
+}

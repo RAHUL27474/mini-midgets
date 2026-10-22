@@ -1,1 +1,32 @@
-{"keys":{},"voice":{},"music":{"m_night":"m_night_0.wav","m_gold":"m_gold_1.wav","m_tense":"m_tense_0.wav"}}
+{
+ "keys": {
+  "s01": "cph2-keys-a/s01_2.png",
+  "s02": "cph2-keys-a/s02_1.png",
+  "s03": "cph2-keys-a/s03_2.png",
+  "s04": "cph2-keys-a/s04_1.png",
+  "s05": "cph2-keys-a/s05_1.png",
+  "s06": "cph2-keys-b/s06_2.png",
+  "s07": "cph2-keys-b/s07_1.png",
+  "s08": "cph2-keys-b/s08_1.png",
+  "s09": "cph2-keys-b/s09_2.png",
+  "s10": "cph2-keys-b/s10_1.png",
+  "s11": "cph2-keys-c/s11_1.png",
+  "s12": "cph2-keys-c/s12_1.png",
+  "s13": "cph2-keys-c/s13_2.png",
+  "s14": "cph2-keys-c/s14_2.png",
+  "s15": "cph2-keys-c/s15_1.png"
+ },
+ "voice": {
+  "k1": "cph2-voice/k1_3.wav",
+  "sh1": "cph2-voice/sh1_3.wav",
+  "sh2": "cph2-voice/sh2_3.wav",
+  "sh3": "cph2-voice/sh3_1.wav",
+  "sh4": "cph2-voice/sh4_1.wav",
+  "k2": "cph2-voice/k2_0.wav"
+ },
+ "music": {
+  "m_night": "m_night_0.wav",
+  "m_gold": "m_gold_1.wav",
+  "m_tense": "m_tense_0.wav"
+ }
+}
