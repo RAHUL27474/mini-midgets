@@ -10,10 +10,8 @@ const T = require('./ep01_timing');
 const { SR, TAU, rnd, mtof, put, tone, fnoise, tick, whoosh, thump, write } = bed(T.DUR);
 
 // ---------- SFX
-function rain(t0, dur, amp, lp = 6000) {
-  fnoise(t0, dur, 0, amp, t => Math.min(1, t / 0.8, (dur - t) / 1.0), lp, 700);
-  for (let t = t0; t < t0 + dur; t += 0.02 + rnd() * 0.06) fnoise(t, 0.015, (rnd() - 0.5) * 1.6, amp * 1.3 * rnd(), q => Math.exp(-q * 300), 9000, 2500);
-}
+// rain sound is off at the user's request (visual rain stays); rain.js has a natural-sounding rain if it's ever wanted back
+const rain = () => {};
 function trainRhythm(t0, dur, amp, rate = 1) { // "ta-dak ta-dak": paired wheel thumps over a low rumble
   fnoise(t0, dur, 0, amp * 0.7, t => Math.min(1, t / 1, (dur - t) / 1), 260, 30);
   for (let t = t0 + 0.2; t < t0 + dur - 0.2; t += 0.9 / rate) { thump(t, 70, amp * 1.6, 22); thump(t + 0.16 / rate, 64, amp * 1.3, 24); fnoise(t, 0.05, -0.3, amp * 0.5, q => Math.exp(-q * 60), 3000, 600); }

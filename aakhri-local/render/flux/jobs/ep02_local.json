@@ -1,0 +1,38 @@
+{
+ "model": "D:\\ai\\models\\flux2-klein-4b-int4-ov",
+ "width": 576,
+ "height": 1024,
+ "steps": 4,
+ "items": [
+  {
+   "id": "s07",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Close-up of Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, tired kind brown eyes, wearing light-blue nurse scrubs under a loose grey cardigan, a hospital ID lanyard and a canvas tote bag, laughing softly with her eyes crinkling, her guard down, warm light touching one side of her face, city lights streaking behind her through the train window.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep02\\shots_ai\\s07.png"
+  },
+  {
+   "id": "s09",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Close-up of Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, tired kind brown eyes, wearing light-blue nurse scrubs under a loose grey cardigan, a hospital ID lanyard and a canvas tote bag, asking a gentle sincere question, soft eyes, mixed warm and cold light, night train interior.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep02\\shots_ai\\s09.png"
+  },
+  {
+   "id": "s11",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Extreme close-up of a cracked silver wristwatch on a young woman's brown wrist with a grey cardigan cuff, the watch clearly showing 1:12, dim train light.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep02\\shots_ai\\s11.png"
+  },
+  {
+   "id": "s15",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Top-down close-up: a young Indian woman's brown hands opening a small round two-tier steel tiffin box, fresh glistening orange jalebis inside, and \"14-7-75\" scratched by hand on the underside of the lid, warm light from inside the box.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep02\\shots_ai\\s15.png"
+  },
+  {
+   "id": "s12",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Wide shot of an empty night Mumbai local train coach with its fluorescent tube lights flickering, almost completely dark, eerie, no people.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep02\\shots_ai\\s12.png"
+  }
+ ]
+}

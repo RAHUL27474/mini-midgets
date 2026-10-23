@@ -49,7 +49,29 @@ const ep01 = {
   items: S.map(([id, refs, prompt]) => ({ id, seed: 7, prompt, refs: refs.map(ref), out: out('ep01', id) })),
 };
 
+// EP2 "Seat 0" (ep02/ep02_script.md)
+const TIFFIN = 'a small round two-tier steel tiffin box';
+const S2 = [
+  ['s01', `${STYLE} Wide shot of a long empty railway platform at night in light drizzle: ${MEERA}, standing alone in a cone of cold light under a flickering station sign, holding an old yellowed train ticket in both hands, darkness on both sides.`],
+  ['s02', `${STYLE} Close-up of ${MEERA}, a bright train headlight sweeping across her face from the side, scared but determined eyes, rain, night.`],
+  ['s03', `${STYLE} Shot from inside ${COACH.replace('inside ', '')}: ${OLDMAN}, sitting with ${TIFFIN} on his lap, looking up warmly at a young nurse in a grey cardigan stepping in through the doorway.`],
+  ['s04', `${STYLE} Medium shot ${COACH}: ${MEERA}, sitting stiffly on a green seat gripping her tote bag strap, tense and suspicious, looking across at someone.`],
+  ['s05', `${STYLE} Medium close-up ${COACH}: ${OLDMAN}, chuckling and turning his head to look out of the rain-streaked window at the city lights, nostalgic.`],
+  ['s06', `${STYLE} Close-up of an elderly Indian man's wrinkled hands patting ${TIFFIN} resting on his lap, brown wool sweater vest and white kurta, warm amber light, night train interior.`],
+  ['s07', `${STYLE} Close-up of ${MEERA}, laughing softly with her eyes crinkling, her guard down, warm light touching one side of her face, city lights streaking behind her through the train window.`],
+  ['s08', `${STYLE} Symmetrical wide two-shot ${COACH}: ${OLDMAN}, telling a story with hand gestures on one side, while ${MEERA}, leans in listening on the other side; warm amber light on his side and cold blue light on hers meeting in the middle of the aisle.`],
+  ['s09', `${STYLE} Close-up of ${MEERA}, asking a gentle sincere question, soft eyes, mixed warm and cold light, night train interior.`],
+  ['s10', `${STYLE} Medium shot ${COACH}: ${OLDMAN}, smiling faintly and pointing toward the empty seat right next to the open train door, rain blowing in through the open door.`],
+  ['s11', `${STYLE} Extreme close-up of a cracked silver wristwatch on a young woman's brown wrist with a grey cardigan cuff, the watch clearly showing 1:12, dim train light.`],
+  ['s12', `${STYLE} Wide shot of an empty night Mumbai local train coach with its fluorescent tube lights flickering, almost completely dark, eerie, no people.`],
+  ['s13', `${STYLE} Medium shot ${COACH}: ${MEERA}, half standing up from her seat in shock, wide eyes, staring at the empty seat opposite her, cold blue light.`],
+  ['s14', `${STYLE} ${TIFFIN} sitting alone on an empty green train bench seat, a thin wisp of steam rising from it, faint warm glow around it, empty night train coach, no people.`],
+  ['s15', `${STYLE} Top-down close-up: a young Indian woman's brown hands opening ${TIFFIN}, fresh glistening orange jalebis inside, and "14-7-75" scratched by hand on the underside of the lid, warm light from inside the box.`],
+];
+const ep02 = { model: MODEL, width: 576, height: 1024, steps: 4, items: S2.map(([id, prompt]) => ({ id, seed: 7, prompt, out: out('ep02', id) })) };
+
 fs.mkdirSync(path.join(__dirname, 'jobs'), { recursive: true });
 fs.writeFileSync(path.join(__dirname, 'jobs', 'cast.json'), JSON.stringify(cast, null, 1));
 fs.writeFileSync(path.join(__dirname, 'jobs', 'ep01.json'), JSON.stringify(ep01, null, 1));
-console.log('cast', cast.items.length, 'ep01', ep01.items.length);
+fs.writeFileSync(path.join(__dirname, 'jobs', 'ep02.json'), JSON.stringify(ep02, null, 1));
+console.log('cast', cast.items.length, 'ep01', ep01.items.length, 'ep02', ep02.items.length);

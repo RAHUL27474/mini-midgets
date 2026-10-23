@@ -36,13 +36,12 @@ meta = {m["id"]: m for m in json.load(open(os.path.join(B, "voice.json"), encodi
 for lid, char, text, r, exag, cfg, exp in LINES:
     if only and lid not in only: continue
     rp = ref(*r); best = None
-    for seed in (1, 2):
+    for seed in ([int(x) for x in os.environ["SEEDS"].split(",")] if os.environ.get("SEEDS") else (1, 2, 3) if exp < 1.5 else (1, 2)):  # SEEDS=3,4,5 for fresh takes
         torch.manual_seed(seed); t = time.time()
         wav = model.generate(text, language_id="hi", audio_prompt_path=rp, exaggeration=exag, cfg_weight=cfg, temperature=0.8)
         a = wav.squeeze().cpu().numpy(); dur = len(a) / model.sr
         log(lid, "take", seed, f"{dur:.2f}s", f"(gen {time.time() - t:.0f}s)")
-        if 0.6 * exp < dur < 1.8 * exp and (best is None or abs(dur - exp) < abs(best[1] - exp)): best = (a, dur)
-        if best is None and seed == 2: best = (a, dur)
+        if best is None or abs(dur - exp) < abs(best[1] - exp): best = (a, dur)  # closest to the expected delivery
     a = best[0] / max(1e-6, np.abs(best[0]).max()) * 0.9
     sf.write(os.path.join(B, f"{lid}.raw.wav"), a, model.sr)
     meta[lid] = {"id": lid, "char": char, "text": text, "dur": round(best[1], 2), "ref": os.path.basename(rp)}
