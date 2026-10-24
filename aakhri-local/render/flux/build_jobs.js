@@ -70,6 +70,32 @@ const S2 = [
 ];
 const ep02 = { model: MODEL, width: 576, height: 1024, steps: 4, items: S2.map(([id, prompt]) => ({ id, seed: 7, prompt, out: out('ep02', id) })) };
 
+// EP3 "1975" (ep03/ep03_script.md): new locked looks for Meera off duty and the archive clerk; sepia for the 1975 flashback
+const MEERA_OFF = 'Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, tired kind brown eyes, wearing a mustard yellow kurta with jeans, a grey cardigan tied around her waist and a canvas tote bag';
+const CLERK = 'a thin elderly Indian archive clerk with thick black-rimmed spectacles, a grey sleeveless sweater over a white shirt and a pencil behind his ear';
+const SEPIA = 'Sepia-toned 1970s flashback, faded vintage film grain, cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie.';
+const ARCHIVE = 'inside a huge old colonial railway archive room with towering wooden shelves of red cloth-bound registers, slow ceiling fans and light shafts through tall windows';
+const S3 = [
+  ['s01', `${STYLE} Low-angle wide shot of the gothic Victorian Chhatrapati Shivaji Terminus railway station in Mumbai on an overcast monsoon morning, pigeons taking off, crowds of commuters, ${MEERA_OFF}, walking against the crowd.`],
+  ['s02', `${STYLE} From behind: ${MEERA_OFF}, pushing open a tall heavy old teak door with a brass plate in a colonial corridor with arches, daylight, dust in the light.`],
+  ['s03', `${STYLE} High-angle wide shot ${ARCHIVE}, dust floating in the light, ${MEERA_OFF}, small in the frame walking down the aisle.`],
+  ['s04', `${STYLE} Medium close-up ${ARCHIVE}: ${CLERK}, sitting at a cluttered desk with files and a rubber stamp, peering skeptically over his spectacles at an old yellowed train ticket.`],
+  ['s05', `${STYLE} Close-up: an old red cloth-bound register open on a desk, handwritten ink ledger entries, an elderly finger stopping on one line, dust in the air, warm daylight.`],
+  ['s06', `${STYLE} Medium shot ${ARCHIVE}: ${MEERA_OFF}, sitting alone at a long wooden table under a green banker's lamp, carefully unfolding a large brittle yellowed newspaper.`],
+  ['s07', `${STYLE} Top-down: an old yellowed 1975 English newspaper front page on a wooden table, a large headline about a train fire, a grainy black and white photo of a man silhouetted in smoke carrying a baby.`],
+  ['s08', `${SEPIA} A 1970s Mumbai local train coach on fire at night, flames and thick smoke, silhouettes of people running on the platform in panic.`],
+  ['s09', `${SEPIA} ${OLDMAN.replace(', lit by a soft warm amber glow', '')}, stepping out of thick smoke from a burning train door at night, cradling a crying baby wrapped in a red and gold embroidered shawl, soot on his face, heroic.`],
+  ['s10', `${SEPIA} On a 1970s railway platform at night, an elderly Indian man with white hair, round glasses and a leather satchel hands a baby in an embroidered shawl to a railway porter in a red kurta with a brass arm badge, then turns toward the burning train, flames ahead of him.`],
+  ['s11', `${STYLE} Close-up ${ARCHIVE.replace('inside ', 'in ')}: ${MEERA_OFF}, tears welling in her eyes, touching a grainy old newspaper photo with her fingertip, green lamp light on her face.`],
+  ['s12', `${STYLE} Over-the-shoulder shot of a young woman with a black braid and a mustard kurta leaning close over an old newspaper, a small grainy photo of a baby in a hospital cot with a caption, green lamp light.`],
+  ['s13', `${STYLE} Extreme close-up of an old yellowed newspaper: a small grainy black and white photo of a baby in a hospital cot with a short printed caption beneath it, dramatic lamp light.`],
+  ['s14', `${STYLE} Close-up ${ARCHIVE.replace('inside ', 'in ')}: ${MEERA_OFF}, pale with shock, staring down at a newspaper, a ceiling fan blurred in the background.`],
+  ['s15', `${STYLE} Close-up: a young Indian woman's shaking brown hand holding a smartphone showing an incoming call screen with a heart and a photo of a smiling middle-aged Indian woman, an old newspaper blurred behind.`],
+];
+const ep03 = { model: MODEL, width: 576, height: 1024, steps: 4, items: S3.map(([id, prompt]) => ({ id, seed: 7, prompt, out: out('ep03', id) })) };
+fs.mkdirSync(path.join(__dirname, 'jobs'), { recursive: true });
+fs.writeFileSync(path.join(__dirname, 'jobs', 'ep03.json'), JSON.stringify(ep03, null, 1));
+
 fs.mkdirSync(path.join(__dirname, 'jobs'), { recursive: true });
 fs.writeFileSync(path.join(__dirname, 'jobs', 'cast.json'), JSON.stringify(cast, null, 1));
 fs.writeFileSync(path.join(__dirname, 'jobs', 'ep01.json'), JSON.stringify(ep01, null, 1));

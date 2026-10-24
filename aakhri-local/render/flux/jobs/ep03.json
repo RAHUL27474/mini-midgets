@@ -1,0 +1,98 @@
+{
+ "model": "D:\\ai\\models\\flux2-klein-4b-int4-ov",
+ "width": 576,
+ "height": 1024,
+ "steps": 4,
+ "items": [
+  {
+   "id": "s01",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Low-angle wide shot of the gothic Victorian Chhatrapati Shivaji Terminus railway station in Mumbai on an overcast monsoon morning, pigeons taking off, crowds of commuters, Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, tired kind brown eyes, wearing a mustard yellow kurta with jeans, a grey cardigan tied around her waist and a canvas tote bag, walking against the crowd.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep03\\shots_ai\\s01.png"
+  },
+  {
+   "id": "s02",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. From behind: Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, tired kind brown eyes, wearing a mustard yellow kurta with jeans, a grey cardigan tied around her waist and a canvas tote bag, pushing open a tall heavy old teak door with a brass plate in a colonial corridor with arches, daylight, dust in the light.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep03\\shots_ai\\s02.png"
+  },
+  {
+   "id": "s03",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. High-angle wide shot inside a huge old colonial railway archive room with towering wooden shelves of red cloth-bound registers, slow ceiling fans and light shafts through tall windows, dust floating in the light, Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, tired kind brown eyes, wearing a mustard yellow kurta with jeans, a grey cardigan tied around her waist and a canvas tote bag, small in the frame walking down the aisle.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep03\\shots_ai\\s03.png"
+  },
+  {
+   "id": "s04",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Medium close-up inside a huge old colonial railway archive room with towering wooden shelves of red cloth-bound registers, slow ceiling fans and light shafts through tall windows: a thin elderly Indian archive clerk with thick black-rimmed spectacles, a grey sleeveless sweater over a white shirt and a pencil behind his ear, sitting at a cluttered desk with files and a rubber stamp, peering skeptically over his spectacles at an old yellowed train ticket.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep03\\shots_ai\\s04.png"
+  },
+  {
+   "id": "s05",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Close-up: an old red cloth-bound register open on a desk, handwritten ink ledger entries, an elderly finger stopping on one line, dust in the air, warm daylight.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep03\\shots_ai\\s05.png"
+  },
+  {
+   "id": "s06",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Medium shot inside a huge old colonial railway archive room with towering wooden shelves of red cloth-bound registers, slow ceiling fans and light shafts through tall windows: Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, tired kind brown eyes, wearing a mustard yellow kurta with jeans, a grey cardigan tied around her waist and a canvas tote bag, sitting alone at a long wooden table under a green banker's lamp, carefully unfolding a large brittle yellowed newspaper.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep03\\shots_ai\\s06.png"
+  },
+  {
+   "id": "s07",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Top-down: an old yellowed 1975 English newspaper front page on a wooden table, a large headline about a train fire, a grainy black and white photo of a man silhouetted in smoke carrying a baby.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep03\\shots_ai\\s07.png"
+  },
+  {
+   "id": "s08",
+   "seed": 7,
+   "prompt": "Sepia-toned 1970s flashback, faded vintage film grain, cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie. A 1970s Mumbai local train coach on fire at night, flames and thick smoke, silhouettes of people running on the platform in panic.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep03\\shots_ai\\s08.png"
+  },
+  {
+   "id": "s09",
+   "seed": 7,
+   "prompt": "Sepia-toned 1970s flashback, faded vintage film grain, cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie. an elderly Indian man of 68 with neat white hair, a thick white moustache, round gold wire-rimmed glasses, a brown wool sweater vest over a white kurta and an old brown leather satchel, stepping out of thick smoke from a burning train door at night, cradling a crying baby wrapped in a red and gold embroidered shawl, soot on his face, heroic.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep03\\shots_ai\\s09.png"
+  },
+  {
+   "id": "s10",
+   "seed": 7,
+   "prompt": "Sepia-toned 1970s flashback, faded vintage film grain, cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie. On a 1970s railway platform at night, an elderly Indian man with white hair, round glasses and a leather satchel hands a baby in an embroidered shawl to a railway porter in a red kurta with a brass arm badge, then turns toward the burning train, flames ahead of him.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep03\\shots_ai\\s10.png"
+  },
+  {
+   "id": "s11",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Close-up in a huge old colonial railway archive room with towering wooden shelves of red cloth-bound registers, slow ceiling fans and light shafts through tall windows: Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, tired kind brown eyes, wearing a mustard yellow kurta with jeans, a grey cardigan tied around her waist and a canvas tote bag, tears welling in her eyes, touching a grainy old newspaper photo with her fingertip, green lamp light on her face.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep03\\shots_ai\\s11.png"
+  },
+  {
+   "id": "s12",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Over-the-shoulder shot of a young woman with a black braid and a mustard kurta leaning close over an old newspaper, a small grainy photo of a baby in a hospital cot with a caption, green lamp light.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep03\\shots_ai\\s12.png"
+  },
+  {
+   "id": "s13",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Extreme close-up of an old yellowed newspaper: a small grainy black and white photo of a baby in a hospital cot with a short printed caption beneath it, dramatic lamp light.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep03\\shots_ai\\s13.png"
+  },
+  {
+   "id": "s14",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Close-up in a huge old colonial railway archive room with towering wooden shelves of red cloth-bound registers, slow ceiling fans and light shafts through tall windows: Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, tired kind brown eyes, wearing a mustard yellow kurta with jeans, a grey cardigan tied around her waist and a canvas tote bag, pale with shock, staring down at a newspaper, a ceiling fan blurred in the background.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep03\\shots_ai\\s14.png"
+  },
+  {
+   "id": "s15",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Close-up: a young Indian woman's shaking brown hand holding a smartphone showing an incoming call screen with a heart and a photo of a smiling middle-aged Indian woman, an old newspaper blurred behind.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep03\\shots_ai\\s15.png"
+  }
+ ]
+}
