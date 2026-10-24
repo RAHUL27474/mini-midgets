@@ -7,7 +7,10 @@ const ffmpeg = require(path.join(CPH, 'node_modules', 'ffmpeg-static'));
 const { execFileSync } = require('child_process');
 const B = path.join(__dirname, '..', '..', 'ep02', 'build');
 const T = require('./ep02_timing');
-const { SR, TAU, rnd, mtof, put, tone, fnoise, tick, whoosh, thump, write } = bed(T.DUR);
+const { SR, TAU, rnd, mtof, put, tone, fnoise: fnoiseRaw, tick, whoosh, thump, write } = bed(T.DUR);
+// no hissing noise beds (the user heard them as noise): long filtered-noise layers - train rumble, crowd, fire hiss, wind,
+// brake hiss - are dropped; short noise transients (ticks, pages, crackles, clicks) and every tonal sound stay
+const fnoise = (t0, dur, ...rest) => (dur > 0.8 ? undefined : fnoiseRaw(t0, dur, ...rest));
 
 // ---------- SFX
 // rain sound is off at the user's request (visual rain stays); rain.js has a natural-sounding rain if it's ever wanted back
@@ -22,6 +25,7 @@ function horn(t0, dur, amp) {
 function brakes(t0, dur, amp) { tone(t0, dur, 0.2, t => Math.sin(TAU * (2600 - t * 500) * t) * amp * Math.min(1, t / 0.2, (dur - t) / 0.3) * (0.6 + 0.4 * Math.sin(TAU * 23 * t))); fnoise(t0, dur, 0, amp * 0.6, t => Math.min(1, (dur - t) / 0.3), 5000, 1500); }
 function doorHiss(t0) { fnoise(t0, 0.9, 0.4, 0.22, t => Math.min(1, t / 0.05) * Math.exp(-t * 3), 7000, 1200); thump(t0 + 0.85, 90, 0.4, 30); }
 function tubeBuzz(t0, dur, amp, flick = []) {
+  amp *= 0.45; // the hum stays, but quietly
   tone(t0, dur, -0.2, t => (Math.sin(TAU * 100 * t) + 0.5 * Math.sin(TAU * 200 * t)) * amp * Math.min(1, t / 0.3, (dur - t) / 0.3));
   for (const f of flick) fnoise(f, 0.12, -0.2, amp * 6, q => (Math.sin(q * 160) > 0 ? 1 : 0.2), 4000, 800);
 }

@@ -7,7 +7,10 @@ const ffmpeg = require(path.join(CPH, 'node_modules', 'ffmpeg-static'));
 const { execFileSync } = require('child_process');
 const B = path.join(__dirname, '..', '..', 'ep03', 'build');
 const T = require('./ep03_timing');
-const { SR, TAU, rnd, mtof, put, tone, fnoise, tick, whoosh, thump, write } = bed(T.DUR);
+const { SR, TAU, rnd, mtof, put, tone, fnoise: fnoiseRaw, tick, whoosh, thump, write } = bed(T.DUR);
+// no hissing noise beds (the user heard them as noise): long filtered-noise layers - train rumble, crowd, fire hiss, wind,
+// brake hiss - are dropped; short noise transients (ticks, pages, crackles, clicks) and every tonal sound stay
+const fnoise = (t0, dur, ...rest) => (dur > 0.8 ? undefined : fnoiseRaw(t0, dur, ...rest));
 
 // ---------- SFX
 // rain sound is off at the user's request (visual rain stays); rain.js has a natural-sounding rain if it's ever wanted back
@@ -22,6 +25,7 @@ function horn(t0, dur, amp) {
 function brakes(t0, dur, amp) { tone(t0, dur, 0.2, t => Math.sin(TAU * (2600 - t * 500) * t) * amp * Math.min(1, t / 0.2, (dur - t) / 0.3) * (0.6 + 0.4 * Math.sin(TAU * 23 * t))); fnoise(t0, dur, 0, amp * 0.6, t => Math.min(1, (dur - t) / 0.3), 5000, 1500); }
 function doorHiss(t0) { fnoise(t0, 0.9, 0.4, 0.22, t => Math.min(1, t / 0.05) * Math.exp(-t * 3), 7000, 1200); thump(t0 + 0.85, 90, 0.4, 30); }
 function tubeBuzz(t0, dur, amp, flick = []) {
+  amp *= 0.45; // the hum stays, but quietly
   tone(t0, dur, -0.2, t => (Math.sin(TAU * 100 * t) + 0.5 * Math.sin(TAU * 200 * t)) * amp * Math.min(1, t / 0.3, (dur - t) / 0.3));
   for (const f of flick) fnoise(f, 0.12, -0.2, amp * 6, q => (Math.sin(q * 160) > 0 ? 1 : 0.2), 4000, 800);
 }
@@ -43,7 +47,8 @@ function creak(t0, dur) { tone(t0, dur, 0.2, t => Math.sin(TAU * (180 + 90 * Mat
 function fan(t0, dur, amp, slowTo = 1) { tone(t0, dur, -0.3, t => { const r = 1 - (1 - slowTo) * (t / dur); return (Math.sin(TAU * 55 * r * t) * 0.6 + Math.sin(TAU * 110 * r * t) * 0.3) * amp * Math.min(1, t / 0.5, (dur - t) / 0.5) * (0.7 + 0.3 * Math.sin(TAU * 2.2 * r * t)); }); }
 function typewriter(t0, dur) { for (let t = t0; t < t0 + dur; t += 0.09 + rnd() * 0.25) { thump(t, 1400, 0.05, 120); fnoise(t, 0.02, 0.5, 0.06, q => Math.exp(-q * 200), 7000, 2000); } }
 function pages(t0, n) { for (let k = 0; k < n; k++) fnoise(t0 + k * 0.28, 0.22, (rnd() - 0.5), 0.09, q => Math.sin(Math.PI * q / 0.22), 6000, 1500); }
-function fire(t0, dur, amp) { fnoise(t0, dur, 0, amp, t => Math.min(1, t / 0.8, (dur - t) / 0.8) * (0.7 + 0.3 * Math.sin(t * 5.1) * Math.sin(t * 1.7)), 500, 40); for (let t = t0; t < t0 + dur; t += 0.05 + rnd() * 0.2) fnoise(t, 0.03, (rnd() - 0.5), amp * 0.8 * rnd(), q => Math.exp(-q * 90), 1200, 200); }
+function fire(t0, dur, amp) { // crackle + a soft low rumble (tonal), no hiss
+  tone(t0, dur, 0, t => (Math.sin(TAU * 48 * t) * 0.6 + Math.sin(TAU * 71 * t) * 0.4) * amp * 0.9 * Math.min(1, t / 0.8, (dur - t) / 0.8) * (0.7 + 0.3 * Math.sin(t * 3.3))); fnoise(t0, dur, 0, amp, t => Math.min(1, t / 0.8, (dur - t) / 0.8) * (0.7 + 0.3 * Math.sin(t * 5.1) * Math.sin(t * 1.7)), 500, 40); for (let t = t0; t < t0 + dur; t += 0.05 + rnd() * 0.2) fnoise(t, 0.03, (rnd() - 0.5), amp * 0.8 * rnd(), q => Math.exp(-q * 90), 1200, 200); }
 function babyCry(t0, dur, amp) { tone(t0, dur, 0.1, t => { const f = 420 + 60 * Math.sin(TAU * 5 * t) + 120 * Math.sin(TAU * 0.7 * t); return (Math.sin(TAU * f * t) + 0.4 * Math.sin(TAU * 2 * f * t)) * amp * Math.min(1, t / 0.2, (dur - t) / 0.3) * (Math.sin(TAU * 0.9 * t) > -0.3 ? 1 : 0.1); }); }
 function ringtone(t0, dur) { const notes = [76, 79, 84, 79]; for (let t = t0, i = 0; t < t0 + dur; t += 0.22, i++) tone(t, 0.25, 0, q => Math.sin(TAU * mtof(notes[i % 4]) * q) * 0.08 * Math.exp(-q * 9)); for (let t = t0; t < t0 + dur; t += 1.2) fnoise(t, 0.5, 0, 0.05, q => Math.sin(q * 600) > 0 ? 1 : 0.3, 180, 60); }
 // s01 station morning: crowd, pigeons, PA chime, a taxi horn
@@ -52,7 +57,7 @@ creak(S.s02 + 0.9, 1.1);                                                        
 fan(S.s03, S.s14 + 2 - S.s03, 0.02); typewriter(S.s03 + 0.4, 3.0);                         // archive: fans, a typewriter somewhere
 thump(S.s05 + 0.15, 70, 0.4, 14); pages(S.s05 + 0.6, 3);                                   // register lands, pages flip
 pages(S.s06 + 0.5, 2);                                                                     // brittle newspaper unfolds
-fire(S.s08, S.s11 - S.s08, 0.07); crowd(S.s08, S.s10 + 2 - S.s08, 0.03); babyCry(S.s09 + 0.3, 3.2, 0.025); // muffled 1975
+// 1975 flashback: music and the mother's muffled cry only (fire crackle, rumble and the synthetic baby cry read as noise)
 fan(S.s14, 3.5, 0.03, 0.2);                                                                // the fan winds down
 ringtone(S.s15 + 0.4, T.DUR - S.s15 - 0.8);                                                // Ma calling
 // music: the MusicGen score (music_a / music_b) when present, else the procedural piano/drone plan; the end chord + swell always
@@ -86,8 +91,22 @@ if (AI_MUSIC) { // the two cues crossfaded as the 1975 flashback begins (s08), d
   fl.push(`[${nIn}:a]aresample=44100,aformat=channel_layouts=stereo,atrim=0:${xa + 2},afade=t=in:d=1.5,afade=t=out:st=${xa}:d=2[ma]`,
     `[${nIn + 1}:a]aresample=44100,aformat=channel_layouts=stereo,atrim=0:${T.DUR - xa},afade=t=in:d=2,afade=t=out:st=${T.DUR - xa - 5}:d=4,adelay=${xa * 1000}|${xa * 1000}[mb]`,
     `[ma][mb]amix=inputs=2:normalize=0,volume=0.55[mus]`, `[mus][sc]sidechaincompress=threshold=0.03:ratio=6:attack=40:release=500[mduck]`,
-    `[0:a]volume=0.85[b]`, `[b][mduck][vo]amix=inputs=3:normalize=0[pre]`);
-} else fl.push(`[0:a]volume=0.9[b]`, `[b][vo]amix=inputs=2:normalize=0[pre]`);
+    `[0:a]volume=0.85[b]`);
+  nIn += 2;
+} else fl.push(`[0:a]volume=0.9[b]`);
+// realistic ambience from Stable Audio Open Small (build/sfx, made by voice/sfx_gen.py): [file, start, seconds, volume, lowpass Hz]
+// the 1975 flashback layers are low-passed so they sit behind the music like a memory
+const SFX = [['station', 0, S.s03 + 0.3, 0.32, 0], ['archive', S.s03, 10.5, 0.22, 0], ['archive', S.s03 + 10, S.s08 - S.s03 - 10 + 0.5, 0.22, 0],
+  ['fire', S.s08 - 0.3, S.s11 - S.s08 + 0.6, 0.30, 2600], ['crowd', S.s08, 7, 0.18, 2200], ['baby', S.s09 + 0.3, 5.5, 0.20, 3000],
+  ['archive', S.s11, 10.5, 0.22, 0], ['archive', S.s11 + 10, S.s15 - S.s11 - 10, 0.18, 0]]
+  .filter(([f]) => fs.existsSync(path.join(B, 'sfx', `${f}.wav`)));
+const sx = SFX.map(([f, st, dur, vol, lp], k) => {
+  ins.push('-i', path.join(B, 'sfx', `${f}.wav`));
+  fl.push(`[${nIn + k}:a]aresample=44100,aformat=channel_layouts=stereo,atrim=0:${dur.toFixed(2)},${lp ? `lowpass=f=${lp},` : ''}volume=${vol},` +
+    `afade=t=in:d=0.6,afade=t=out:st=${Math.max(0, dur - 0.8).toFixed(2)}:d=0.8,adelay=${Math.round(st * 1000)}|${Math.round(st * 1000)}[x${k}]`);
+  return `[x${k}]`;
+});
+fl.push(`[b]${AI_MUSIC ? '[mduck]' : ''}[vo]${sx.join('')}amix=inputs=${2 + (AI_MUSIC ? 1 : 0) + sx.length}:normalize=0[pre]`);
 fl.push(`[pre]loudnorm=I=-14:TP=-1.5:LRA=11[out]`);
 execFileSync(ffmpeg, ['-y', '-loglevel', 'error', ...ins, '-filter_complex', fl.join(';'), '-map', '[out]', '-ar', '48000', path.join(B, 'mix.wav')]);
 console.log('wrote mix.wav,', dlg.length, 'lines', AI_MUSIC ? '+ MusicGen score' : '+ procedural score', '| -14 LUFS');

@@ -1,0 +1,7 @@
+[
+ {"name": "fire", "prompt": "a large fire burning inside a train carriage at night, roaring flames and wood crackling, realistic field recording", "seconds": 11, "seed": 1},
+ {"name": "crowd", "prompt": "panicked crowd of people shouting and running on a railway platform at night, distant, realistic field recording", "seconds": 11, "seed": 2},
+ {"name": "baby", "prompt": "a baby crying loudly, realistic recording", "seconds": 6, "seed": 3},
+ {"name": "station", "prompt": "busy Indian railway station in the morning, people talking, pigeons flapping, distant train announcement, realistic ambience", "seconds": 8, "seed": 4},
+ {"name": "archive", "prompt": "quiet old office room, slow ceiling fan turning, distant typewriter clacking, paper rustling, realistic room tone", "seconds": 11, "seed": 5}
+]
