@@ -10,7 +10,7 @@ const T = require('./ep02_timing');
 const { SR, TAU, rnd, mtof, put, tone, fnoise: fnoiseRaw, tick, whoosh, thump, write } = bed(T.DUR);
 // no hissing noise beds (the user heard them as noise): long filtered-noise layers - train rumble, crowd, fire hiss, wind,
 // brake hiss - are dropped; short noise transients (ticks, pages, crackles, clicks) and every tonal sound stay
-const fnoise = (t0, dur, ...rest) => (dur > 0.8 ? undefined : fnoiseRaw(t0, dur, ...rest));
+const fnoise = (t0, dur, pan, amp, ...rest) => (dur > 0.8 ? undefined : fnoiseRaw(t0, dur, pan, amp * 0.4, ...rest)); // short noise transients at 40%
 
 // ---------- SFX
 // rain sound is off at the user's request (visual rain stays); rain.js has a natural-sounding rain if it's ever wanted back
@@ -49,8 +49,8 @@ trainRhythm(S.s03, S.s11 - S.s03, 0.09); rain(S.s03, S.s12 - S.s03, 0.05, 3500);
 for (const k of [0, 0.35, 0.7]) thump(S.s06 + 0.6 + k, 900, 0.07, 80);                                            // fingers tapping the steel tiffin
 fnoise(S.s10 + 0.8, S.s10 + 4.6 - (S.s10 + 0.8), 0.4, 0.05, t => Math.min(1, t / 1.2), 1800, 200);                 // wind through the open door
 for (const k of [0.3, 1.3, 2.3]) tick(S.s11 + k, 0.35);                                                            // three loud ticks... then nothing
-tubeBuzz(S.s12, 0.9, 0.02, [S.s12 + 0.1, S.s12 + 0.45, S.s12 + 0.8]);                                              // lights die; dead silence to S13
-trainRhythm(S.s13, T.DUR - S.s13, 0.12, 1.05); rain(S.s13, T.DUR - S.s13, 0.05, 3500); whoosh(S.s13, 0.6, 0.15, 400, 2500); // it all crashes back
+tubeBuzz(S.s12, 0.9, 0.02);                                              // lights die; dead silence to S13
+trainRhythm(S.s13, T.DUR - S.s13, 0.12, 1.05); rain(S.s13, T.DUR - S.s13, 0.05, 3500); // it all crashes back (whoosh removed: measured as noise)
 for (const k of [0, 0.9]) thump(S.s14 + 1.0 + k, 520, 0.09, 6);                                                     // soft bell-like tone
 // music: the MusicGen score (music_a / music_b) when present, else the procedural piano/drone plan; the end chord + swell always
 const AI_MUSIC = fs.existsSync(path.join(B, 'music_a.wav')) && fs.existsSync(path.join(B, 'music_b.wav'));

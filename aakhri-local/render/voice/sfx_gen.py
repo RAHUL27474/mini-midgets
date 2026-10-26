@@ -13,6 +13,9 @@ else: jobs = [{"name": sys.argv[2], "prompt": sys.argv[3], "seconds": float(sys.
 
 torch.set_num_threads(os.cpu_count())
 model, cfg = get_pretrained_model("stabilityai/stable-audio-open-small")
+# the config runs the autoencoder in fp16 (model_half), which is extremely slow on a CPU: force float32 throughout
+model = model.float()
+if getattr(model, "pretransform", None) is not None: model.pretransform.model_half = False
 sr, size = cfg["sample_rate"], cfg["sample_size"]
 for j in jobs:
     out = os.path.join(OUT, f"{j['name']}.wav")

@@ -96,6 +96,29 @@ const ep03 = { model: MODEL, width: 576, height: 1024, steps: 4, items: S3.map((
 fs.mkdirSync(path.join(__dirname, 'jobs'), { recursive: true });
 fs.writeFileSync(path.join(__dirname, 'jobs', 'ep03.json'), JSON.stringify(ep03, null, 1));
 
+// EP4 "Sudha" (ep04/ep04_script.md): new locked look for Meera's mother
+const SUDHA = 'Sudha, a 50-year-old Indian woman with warm brown skin, grey-streaked black hair in a neat bun, kind tired eyes, reading glasses on a chain around her neck, wearing a pale green cotton saree with a maroon border';
+const FLAT = "in a small cozy one-room Mumbai chawl flat at night with a tiny kitchen corner, a steel utensil rack, a wall calendar and warm lamp light";
+const S4 = [
+  ['s01', `${STYLE} Low-angle wide shot of an old Mumbai chawl building at night, wooden balconies with clotheslines, one warm lit window, ${MEERA_OFF}, with damp hair climbing the outside wooden stairs.`],
+  ['s02', `${STYLE} Medium shot ${FLAT}: ${SUDHA}, pouring chai from a small pan into two small glasses at a gas stove, steam rising.`],
+  ['s03', `${STYLE} Top-down close-up of a small wooden table with two glasses of chai, a young woman's brown hand placing an old folded yellowed newspaper with a train fire headline on it, warm light.`],
+  ['s04', `${STYLE} Close-up ${FLAT}: ${MEERA_OFF}, with damp hair and wet eyes, trembling as she asks a question.`],
+  ['s05', `${STYLE} Medium close-up ${FLAT}: ${SUDHA}, frozen with a glass of chai halfway to her lips, staring at an old newspaper, stunned.`],
+  ['s06', `${STYLE} Medium shot ${FLAT}: ${SUDHA}, sitting on the edge of a bed looking out of a window at a distant railway line and city lights at night, remembering, melancholy.`],
+  ['s07', `${STYLE} Close-up ${FLAT}: ${SUDHA}, with tears in her eyes; behind her on the wall a framed photo of an older woman with a marigold garland.`],
+  ['s08', `${STYLE} Low-angle shot ${FLAT}: ${SUDHA}, reaching up to take an old rusted round biscuit tin down from the top of a steel cupboard.`],
+  ['s09', `${STYLE} Top-down close-up of an open rusty round biscuit tin containing a faded red and gold embroidered baby shawl and half of a burnt old yellow cardboard train ticket, warm light.`],
+  ['s10', `${STYLE} Top-down: a young woman's brown hand and an older woman's brown hand side by side on a wooden table, placing a whole old yellowed train ticket next to a half-burnt identical ticket.`],
+  ['s11', `${STYLE} Extreme close-up of two old yellowed cardboard train tickets lined up edge to edge, identical faded print, a scorch mark continuing across both, warm lamp light.`],
+  ['s12', `${STYLE} Two-shot across a small table ${FLAT}: ${SUDHA}, and ${MEERA_OFF}, looking at each other with wet eyes, old tickets and a rusty tin between them.`],
+  ['s13', `${STYLE} Close-up of a paper wall calendar showing July, the date 14 circled in red ink with a small handwritten note, warm home light.`],
+  ['s14', `${STYLE} Close-up ${FLAT}: ${MEERA_OFF}, holding her mother's hand across a small table, determined face with tear tracks.`],
+  ['s15', `${STYLE} Exterior view through a rain-covered window at night: a mother in a pale green saree and her daughter in a mustard kurta sitting at a small table inside a warm lit room, the lights of a passing train streaking across the glass.`],
+];
+const ep04 = { model: MODEL, width: 576, height: 1024, steps: 4, items: S4.map(([id, prompt]) => ({ id, seed: 7, prompt, out: out('ep04', id) })) };
+fs.writeFileSync(path.join(__dirname, 'jobs', 'ep04.json'), JSON.stringify(ep04, null, 1));
+
 fs.mkdirSync(path.join(__dirname, 'jobs'), { recursive: true });
 fs.writeFileSync(path.join(__dirname, 'jobs', 'cast.json'), JSON.stringify(cast, null, 1));
 fs.writeFileSync(path.join(__dirname, 'jobs', 'ep01.json'), JSON.stringify(ep01, null, 1));

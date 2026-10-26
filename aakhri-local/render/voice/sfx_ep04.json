@@ -1,0 +1,32 @@
+[
+ {
+  "name": "cooker",
+  "prompt": "a pressure cooker whistle in a small Indian kitchen, realistic recording",
+  "seconds": 4,
+  "seed": 1
+ },
+ {
+  "name": "pour",
+  "prompt": "hot tea being poured from a pan into small glasses, close, realistic recording",
+  "seconds": 4,
+  "seed": 2
+ },
+ {
+  "name": "tin",
+  "prompt": "an old metal biscuit tin lid being pried open and set down on a wooden table, realistic foley",
+  "seconds": 4,
+  "seed": 3
+ },
+ {
+  "name": "room",
+  "prompt": "quiet small apartment at night, a distant television murmuring next door, a ceiling fan, realistic room tone",
+  "seconds": 11,
+  "seed": 4
+ },
+ {
+  "name": "train",
+  "prompt": "a Mumbai local train passing in the distance at night with a long horn, heard from inside a room, realistic",
+  "seconds": 6,
+  "seed": 5
+ }
+]

@@ -10,7 +10,7 @@ const T = require('./ep01_timing');
 const { SR, TAU, rnd, mtof, put, tone, fnoise: fnoiseRaw, tick, whoosh, thump, write } = bed(T.DUR);
 // no hissing noise beds (the user heard them as noise): long filtered-noise layers - train rumble, crowd, fire hiss, wind,
 // brake hiss - are dropped; short noise transients (ticks, pages, crackles, clicks) and every tonal sound stay
-const fnoise = (t0, dur, ...rest) => (dur > 0.8 ? undefined : fnoiseRaw(t0, dur, ...rest));
+const fnoise = (t0, dur, pan, amp, ...rest) => (dur > 0.8 ? undefined : fnoiseRaw(t0, dur, pan, amp * 0.4, ...rest)); // short noise transients at 40%
 
 // ---------- SFX
 // rain sound is off at the user's request (visual rain stays); rain.js has a natural-sounding rain if it's ever wanted back
@@ -49,7 +49,7 @@ horn(S.s03 + 0.1, 1.6, 0.09); trainRhythm(S.s03, 3.2, 0.12, 1.6); brakes(S.s03 +
 trainRhythm(S.s04, S.s11 - S.s04 + 0.2, 0.10); rain(S.s04, T.DUR - S.s04, 0.06, 3500);
 tubeBuzz(S.s04, T.DUR - S.s04, 0.012, [S.s04 + 1.2, S.s11 + 0.4, S.s11 + 1.4, S.s12 + 2.0]);
 trainRhythm(S.s11, T.DUR - S.s11, 0.07, 0.95);
-fnoise(S.s07 + 2.2, 0.4, 0.3, 0.06, q => Math.exp(-q * 8), 6000, 2000);                      // paper crinkle
+// (paper crinkle removed: measured as noise)                      // paper crinkle
 for (let t = S.s09 + 0.5; t < T.DUR - 0.6; t += 1) tick(t, 0.05 + 0.2 * ((t - S.s09) / (T.DUR - S.s09))); // clock tick, rising
 thump(S.s13 + 1.0, 400, 0.2, 60); fnoise(S.s13 + 1.0, 0.05, 0.4, 0.2, q => Math.exp(-q * 90), 6000, 2000); // ticket punch
 horn(S.s14 + 3.4, 1.4, 0.03);                                                                     // distant horn after the TC's line

@@ -10,7 +10,7 @@ const T = require('./ep03_timing');
 const { SR, TAU, rnd, mtof, put, tone, fnoise: fnoiseRaw, tick, whoosh, thump, write } = bed(T.DUR);
 // no hissing noise beds (the user heard them as noise): long filtered-noise layers - train rumble, crowd, fire hiss, wind,
 // brake hiss - are dropped; short noise transients (ticks, pages, crackles, clicks) and every tonal sound stay
-const fnoise = (t0, dur, ...rest) => (dur > 0.8 ? undefined : fnoiseRaw(t0, dur, ...rest));
+const fnoise = (t0, dur, pan, amp, ...rest) => (dur > 0.8 ? undefined : fnoiseRaw(t0, dur, pan, amp * 0.4, ...rest)); // short noise transients at 40%
 
 // ---------- SFX
 // rain sound is off at the user's request (visual rain stays); rain.js has a natural-sounding rain if it's ever wanted back
@@ -52,11 +52,11 @@ function fire(t0, dur, amp) { // crackle + a soft low rumble (tonal), no hiss
 function babyCry(t0, dur, amp) { tone(t0, dur, 0.1, t => { const f = 420 + 60 * Math.sin(TAU * 5 * t) + 120 * Math.sin(TAU * 0.7 * t); return (Math.sin(TAU * f * t) + 0.4 * Math.sin(TAU * 2 * f * t)) * amp * Math.min(1, t / 0.2, (dur - t) / 0.3) * (Math.sin(TAU * 0.9 * t) > -0.3 ? 1 : 0.1); }); }
 function ringtone(t0, dur) { const notes = [76, 79, 84, 79]; for (let t = t0, i = 0; t < t0 + dur; t += 0.22, i++) tone(t, 0.25, 0, q => Math.sin(TAU * mtof(notes[i % 4]) * q) * 0.08 * Math.exp(-q * 9)); for (let t = t0; t < t0 + dur; t += 1.2) fnoise(t, 0.5, 0, 0.05, q => Math.sin(q * 600) > 0 ? 1 : 0.3, 180, 60); }
 // s01 station morning: crowd, pigeons, PA chime, a taxi horn
-crowd(0, S.s03, 0.06); wings(0.4); wings(1.1); pa(1.6); horn(2.8, 0.4, 0.02);
+pa(1.6); horn(2.8, 0.4, 0.02);                                                             // (wing-flap / typewriter noise bursts removed: measured as hiss)
 creak(S.s02 + 0.9, 1.1);                                                                   // the heavy teak door
-fan(S.s03, S.s14 + 2 - S.s03, 0.02); typewriter(S.s03 + 0.4, 3.0);                         // archive: fans, a typewriter somewhere
-thump(S.s05 + 0.15, 70, 0.4, 14); pages(S.s05 + 0.6, 3);                                   // register lands, pages flip
-pages(S.s06 + 0.5, 2);                                                                     // brittle newspaper unfolds
+fan(S.s03, S.s14 + 2 - S.s03, 0.02);                                                       // archive: slow fan hum
+thump(S.s05 + 0.15, 70, 0.4, 14);                                   // register lands, pages flip
+// (page rustles removed: measured as noise)                                                                     // brittle newspaper unfolds
 // 1975 flashback: music and the mother's muffled cry only (fire crackle, rumble and the synthetic baby cry read as noise)
 fan(S.s14, 3.5, 0.03, 0.2);                                                                // the fan winds down
 ringtone(S.s15 + 0.4, T.DUR - S.s15 - 0.8);                                                // Ma calling
@@ -96,9 +96,9 @@ if (AI_MUSIC) { // the two cues crossfaded as the 1975 flashback begins (s08), d
 } else fl.push(`[0:a]volume=0.9[b]`);
 // realistic ambience from Stable Audio Open Small (build/sfx, made by voice/sfx_gen.py): [file, start, seconds, volume, lowpass Hz]
 // the 1975 flashback layers are low-passed so they sit behind the music like a memory
-const SFX = [['station', 0, S.s03 + 0.3, 0.32, 0], ['archive', S.s03, 10.5, 0.22, 0], ['archive', S.s03 + 10, S.s08 - S.s03 - 10 + 0.5, 0.22, 0],
+const SFX = [['station', 0, S.s03 + 0.3, 0.16, 3500], // the AI archive room tone measured as hiss, so it is not used
   ['fire', S.s08 - 0.3, S.s11 - S.s08 + 0.6, 0.30, 2600], ['crowd', S.s08, 7, 0.18, 2200], ['baby', S.s09 + 0.3, 5.5, 0.20, 3000],
-  ['archive', S.s11, 10.5, 0.22, 0], ['archive', S.s11 + 10, S.s15 - S.s11 - 10, 0.18, 0]]
+  ]
   .filter(([f]) => fs.existsSync(path.join(B, 'sfx', `${f}.wav`)));
 const sx = SFX.map(([f, st, dur, vol, lp], k) => {
   ins.push('-i', path.join(B, 'sfx', `${f}.wav`));
