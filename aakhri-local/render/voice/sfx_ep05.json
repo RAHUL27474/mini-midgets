@@ -1,0 +1,20 @@
+[
+ {
+  "name": "arrive",
+  "prompt": "a Mumbai local train slowly arriving at a station platform at night and stopping, soft horn, realistic recording",
+  "seconds": 6,
+  "seed": 1
+ },
+ {
+  "name": "bells",
+  "prompt": "gentle distant temple bells ringing at dawn, peaceful, realistic recording",
+  "seconds": 8,
+  "seed": 2
+ },
+ {
+  "name": "morning",
+  "prompt": "morning railway platform, a crowded local train rushing past, realistic recording",
+  "seconds": 6,
+  "seed": 3
+ }
+]

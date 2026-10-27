@@ -119,6 +119,29 @@ const S4 = [
 const ep04 = { model: MODEL, width: 576, height: 1024, steps: 4, items: S4.map(([id, prompt]) => ({ id, seed: 7, prompt, out: out('ep04', id) })) };
 fs.writeFileSync(path.join(__dirname, 'jobs', 'ep04.json'), JSON.stringify(ep04, null, 1));
 
+// EP5 "Shukriya" (finale, ep05/ep05_script.md): finale outfits, warm light flooding the coach, dawn gold at the end
+const MEERA5 = 'Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, kind brown eyes, wearing a plain white kurta under a loose grey cardigan and a cracked silver wristwatch';
+const SUDHA5 = 'Sudha, a 50-year-old Indian woman with warm brown skin, grey-streaked black hair in a neat bun, reading glasses on a chain around her neck, wearing a white cotton saree with a thin maroon border and a shawl';
+const S5 = [
+  ['s01', `${STYLE} Symmetrical wide shot of an empty railway platform at night in light drizzle, a large old platform clock showing 1:11 at the top, ${MEERA5}, and ${SUDHA5}, standing side by side, the mother holding an old round tin to her chest.`],
+  ['s02', `${STYLE} Low angle at track level: a Mumbai local train slowly arriving at a night platform, its headlight glowing softly through light rain, two women waiting on the platform.`],
+  ['s03', `${STYLE} ${COACH.replace('inside ', 'Inside ')}: ${OLDMAN.replace('a soft warm amber glow', 'a bright glowing warm amber light')}, sitting on the seat right beside the open door with a small round two-tier steel tiffin on his lap.`],
+  ['s04', `${STYLE} Close-up of ${OLDMAN}, taking off his round glasses, eyes full of tears, an overwhelmed tender expression, night train interior.`],
+  ['s05', `${STYLE} Inside a night train coach in warm amber light: ${SUDHA5}, kneeling on the floor and touching the feet of a seated elderly man with white hair and a white moustache in respect, an old round tin beside her.`],
+  ['s06', `${STYLE} Close-up of an elderly man's wrinkled brown hand gently placed in blessing on the head of a kneeling woman with grey-streaked hair in a bun, warm golden light.`],
+  ['s07', `${STYLE} Medium close-up in a night train coach: ${MEERA5}, tears streaming down her face, smiling through them, stepping forward, warm light reaching her face.`],
+  ['s08', `${STYLE} Medium shot of ${OLDMAN}, putting his round glasses back on and laughing softly with a hand on his chest, a proud gentle schoolteacher, night train interior.`],
+  ['s09', `${STYLE} Three-shot inside a night train coach bathed in warm light: ${MEERA5}, thanking an elderly man with white hair, round glasses and a brown sweater vest seated by the open door, while a woman in a white saree kneels beside him.`],
+  ['s10', `${STYLE} Profile of an elderly Indian man with white hair, a white moustache and round glasses looking out of an open train door into a deep blue pre-dawn sky, peaceful and content, wind in his hair.`],
+  ['s11', `${STYLE} Interior of a Mumbai local train bursting out of a tunnel into a golden sunrise, brilliant warm dawn light flooding through every window, lens flare, silhouettes of two women and an old man.`],
+  ['s12', `${STYLE} An empty green train seat beside the open door in golden morning light, a small steel tiffin and a single white jasmine flower resting on it, two women embracing in soft focus in the background, peaceful.`],
+  ['s13', `${STYLE} Close-up of a new polished brass memorial plaque on a vintage cast-iron railway platform pillar, a small marigold garland hanging over it, bright morning daylight, a busy platform blurred behind.`],
+  ['s14', `${STYLE} Close-up of a young Indian woman's brown hand touching a brass memorial plaque, a cracked silver wristwatch on her wrist showing 1:13, morning daylight.`],
+  ['s15', `${STYLE} Wide shot: ${MEERA5}, and ${SUDHA5}, standing together on a busy sunny Mumbai railway platform in the morning as a crowded local train rushes past in motion blur, hopeful.`],
+];
+const ep05 = { model: MODEL, width: 576, height: 1024, steps: 4, items: S5.map(([id, prompt]) => ({ id, seed: 7, prompt, out: out('ep05', id) })) };
+fs.writeFileSync(path.join(__dirname, 'jobs', 'ep05.json'), JSON.stringify(ep05, null, 1));
+
 fs.mkdirSync(path.join(__dirname, 'jobs'), { recursive: true });
 fs.writeFileSync(path.join(__dirname, 'jobs', 'cast.json'), JSON.stringify(cast, null, 1));
 fs.writeFileSync(path.join(__dirname, 'jobs', 'ep01.json'), JSON.stringify(ep01, null, 1));

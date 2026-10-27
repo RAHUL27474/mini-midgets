@@ -1,0 +1,98 @@
+{
+ "model": "D:\\ai\\models\\flux2-klein-4b-int4-ov",
+ "width": 576,
+ "height": 1024,
+ "steps": 4,
+ "items": [
+  {
+   "id": "s01",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Symmetrical wide shot of an empty railway platform at night in light drizzle, a large old platform clock showing 1:11 at the top, Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, kind brown eyes, wearing a plain white kurta under a loose grey cardigan and a cracked silver wristwatch, and Sudha, a 50-year-old Indian woman with warm brown skin, grey-streaked black hair in a neat bun, reading glasses on a chain around her neck, wearing a white cotton saree with a thin maroon border and a shawl, standing side by side, the mother holding an old round tin to her chest.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep05\\shots_ai\\s01.png"
+  },
+  {
+   "id": "s02",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Low angle at track level: a Mumbai local train slowly arriving at a night platform, its headlight glowing softly through light rain, two women waiting on the platform.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep05\\shots_ai\\s02.png"
+  },
+  {
+   "id": "s03",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Inside an empty Mumbai local train coach at night, green bench seats, steel grab handles, flickering white tube lights, rain on the windows, city lights streaking past: an elderly Indian man of 68 with neat white hair, a thick white moustache, round gold wire-rimmed glasses, a brown wool sweater vest over a white kurta and an old brown leather satchel, lit by a bright glowing warm amber light, sitting on the seat right beside the open door with a small round two-tier steel tiffin on his lap.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep05\\shots_ai\\s03.png"
+  },
+  {
+   "id": "s04",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Close-up of an elderly Indian man of 68 with neat white hair, a thick white moustache, round gold wire-rimmed glasses, a brown wool sweater vest over a white kurta and an old brown leather satchel, lit by a soft warm amber glow, taking off his round glasses, eyes full of tears, an overwhelmed tender expression, night train interior.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep05\\shots_ai\\s04.png"
+  },
+  {
+   "id": "s05",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Inside a night train coach in warm amber light: Sudha, a 50-year-old Indian woman with warm brown skin, grey-streaked black hair in a neat bun, reading glasses on a chain around her neck, wearing a white cotton saree with a thin maroon border and a shawl, kneeling on the floor and touching the feet of a seated elderly man with white hair and a white moustache in respect, an old round tin beside her.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep05\\shots_ai\\s05.png"
+  },
+  {
+   "id": "s06",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Close-up of an elderly man's wrinkled brown hand gently placed in blessing on the head of a kneeling woman with grey-streaked hair in a bun, warm golden light.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep05\\shots_ai\\s06.png"
+  },
+  {
+   "id": "s07",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Medium close-up in a night train coach: Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, kind brown eyes, wearing a plain white kurta under a loose grey cardigan and a cracked silver wristwatch, tears streaming down her face, smiling through them, stepping forward, warm light reaching her face.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep05\\shots_ai\\s07.png"
+  },
+  {
+   "id": "s08",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Medium shot of an elderly Indian man of 68 with neat white hair, a thick white moustache, round gold wire-rimmed glasses, a brown wool sweater vest over a white kurta and an old brown leather satchel, lit by a soft warm amber glow, putting his round glasses back on and laughing softly with a hand on his chest, a proud gentle schoolteacher, night train interior.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep05\\shots_ai\\s08.png"
+  },
+  {
+   "id": "s09",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Three-shot inside a night train coach bathed in warm light: Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, kind brown eyes, wearing a plain white kurta under a loose grey cardigan and a cracked silver wristwatch, thanking an elderly man with white hair, round glasses and a brown sweater vest seated by the open door, while a woman in a white saree kneels beside him.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep05\\shots_ai\\s09.png"
+  },
+  {
+   "id": "s10",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Profile of an elderly Indian man with white hair, a white moustache and round glasses looking out of an open train door into a deep blue pre-dawn sky, peaceful and content, wind in his hair.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep05\\shots_ai\\s10.png"
+  },
+  {
+   "id": "s11",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Interior of a Mumbai local train bursting out of a tunnel into a golden sunrise, brilliant warm dawn light flooding through every window, lens flare, silhouettes of two women and an old man.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep05\\shots_ai\\s11.png"
+  },
+  {
+   "id": "s12",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. An empty green train seat beside the open door in golden morning light, a small steel tiffin and a single white jasmine flower resting on it, two women embracing in soft focus in the background, peaceful.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep05\\shots_ai\\s12.png"
+  },
+  {
+   "id": "s13",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Close-up of a new polished brass memorial plaque on a vintage cast-iron railway platform pillar, a small marigold garland hanging over it, bright morning daylight, a busy platform blurred behind.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep05\\shots_ai\\s13.png"
+  },
+  {
+   "id": "s14",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Close-up of a young Indian woman's brown hand touching a brass memorial plaque, a cracked silver wristwatch on her wrist showing 1:13, morning daylight.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep05\\shots_ai\\s14.png"
+  },
+  {
+   "id": "s15",
+   "seed": 7,
+   "prompt": "Cinematic anime film still, semi-realistic painted anime art like a Makoto Shinkai movie, detailed hand-painted lighting, soft depth of field, film grain. Wide shot: Meera, a 26-year-old Indian woman with warm brown skin, long black hair in a low side braid over her right shoulder, kind brown eyes, wearing a plain white kurta under a loose grey cardigan and a cracked silver wristwatch, and Sudha, a 50-year-old Indian woman with warm brown skin, grey-streaked black hair in a neat bun, reading glasses on a chain around her neck, wearing a white cotton saree with a thin maroon border and a shawl, standing together on a busy sunny Mumbai railway platform in the morning as a crowded local train rushes past in motion blur, hopeful.",
+   "out": "C:\\Users\\Dell\\Desktop\\claude\\aakhri-local\\ep05\\shots_ai\\s15.png"
+  }
+ ]
+}
